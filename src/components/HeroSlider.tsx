@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Slide {
@@ -96,14 +97,22 @@ export default function HeroSlider() {
               opacity: isActive ? 1 : 0,
               visibility: isActive ? 'visible' : 'hidden',
               transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
-              backgroundImage: `url("${slide.bgImage}")`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
               transform: isActive ? 'scale(1.02)' : 'scale(1)',
               transitionProperty: 'opacity, transform',
               transitionDuration: '1s, 7s',
+              overflow: 'hidden',
             }}
           >
+            {/* Optimized Next.js Hero Image */}
+            <Image
+              src={slide.bgImage}
+              alt={slide.scriptTitle}
+              fill
+              priority={idx === 0}
+              sizes="100vw"
+              quality={75}
+              style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+            />
             {/* Cinematic Gradient Overlays */}
             <div
               style={{

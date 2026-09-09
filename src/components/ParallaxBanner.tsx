@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 interface ParallaxBannerProps {
   id?: string;
@@ -22,14 +23,25 @@ export default function ParallaxBanner({
   return (
     <section
       id={id}
-      className="parallax-section"
       style={{
-        backgroundImage: `url("${image}")`,
+        position: 'relative',
         minHeight: height,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
-      <div className="parallax-overlay" />
-      <div className="parallax-content">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        sizes="100vw"
+        quality={70}
+        style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+      />
+      <div className="parallax-overlay" style={{ zIndex: 1 }} />
+      <div className="parallax-content" style={{ position: 'relative', zIndex: 2 }}>
         <h2 className="parallax-title">{title}</h2>
         <div className="parallax-subtitle">{subtitle}</div>
         <div

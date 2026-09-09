@@ -11,16 +11,19 @@ export default function ChefTeam() {
       id="chefs"
       style={{
         position: 'relative',
-        backgroundImage: 'url("/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg")',
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
         padding: '100px 0',
         color: '#ffffff',
+        overflow: 'hidden',
       }}
-      className="parallax-section-chefs"
     >
+      <Image
+        src="/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg"
+        alt="Wine glasses background"
+        fill
+        sizes="100vw"
+        quality={70}
+        style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+      />
       {/* Dark tint overlay */}
       <div
         style={{
@@ -28,6 +31,7 @@ export default function ChefTeam() {
           inset: 0,
           backgroundColor: 'rgba(14, 14, 14, 0.82)',
           backdropFilter: 'blur(2px)',
+          zIndex: 1,
         }}
       />
 
