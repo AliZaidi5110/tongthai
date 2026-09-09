@@ -9,6 +9,7 @@ interface ParallaxBannerProps {
   title: string;
   subtitle: string;
   height?: string;
+  objectPosition?: string;
   children?: React.ReactNode;
 }
 
@@ -17,31 +18,26 @@ export default function ParallaxBanner({
   image,
   title,
   subtitle,
-  height = '420px',
+  height,
+  objectPosition = 'center 45%',
   children,
 }: ParallaxBannerProps) {
   return (
     <section
       id={id}
-      style={{
-        position: 'relative',
-        minHeight: height,
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className="parallax-banner-container"
+      style={height ? { minHeight: height } : undefined}
     >
       <Image
         src={image}
         alt={title}
         fill
-        sizes="100vw"
-        quality={70}
-        style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+        sizes="(max-width: 768px) 100vw, 1920px"
+        quality={75}
+        style={{ objectFit: 'cover', objectPosition, zIndex: 0 }}
       />
-      <div className="parallax-overlay" style={{ zIndex: 1 }} />
-      <div className="parallax-content" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="parallax-banner-overlay" />
+      <div className="parallax-content">
         <h2 className="parallax-title">{title}</h2>
         <div className="parallax-subtitle">{subtitle}</div>
         <div

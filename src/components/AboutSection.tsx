@@ -31,6 +31,7 @@ export default function AboutSection() {
                 alt="TongThai Restaurant - 198-200 Keighley Road, Bradford"
                 width={640}
                 height={460}
+                sizes="(max-width: 768px) 100vw, 640px"
                 style={{
                   width: '100%',
                   height: 'auto',
@@ -95,6 +96,7 @@ export default function AboutSection() {
             </div>
             {/* Elegant framing border accent */}
             <div
+              className="about-accent-frame"
               style={{
                 position: 'absolute',
                 top: '-15px',

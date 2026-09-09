@@ -9,19 +9,14 @@ export default function ChefTeam() {
   return (
     <section
       id="chefs"
-      style={{
-        position: 'relative',
-        padding: '100px 0',
-        color: '#ffffff',
-        overflow: 'hidden',
-      }}
+      className="chef-team-section"
     >
       <Image
         src="/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg"
         alt="Wine glasses background"
         fill
-        sizes="100vw"
-        quality={70}
+        sizes="(max-width: 768px) 100vw, 1920px"
+        quality={75}
         style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
       />
       {/* Dark tint overlay */}
@@ -29,7 +24,7 @@ export default function ChefTeam() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(14, 14, 14, 0.82)',
+          backgroundColor: 'rgba(12, 12, 12, 0.86)',
           backdropFilter: 'blur(2px)',
           zIndex: 1,
         }}
@@ -37,7 +32,7 @@ export default function ChefTeam() {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <h2
             style={{
               fontFamily: 'var(--font-script)',
@@ -73,13 +68,7 @@ export default function ChefTeam() {
         </div>
 
         {/* 3-Chef Cards */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '36px',
-          }}
-        >
+        <div className="chef-grid-container">
           {CHEFS.map((chef) => (
             <div
               key={chef.id}
@@ -94,21 +83,15 @@ export default function ChefTeam() {
               className="chef-card"
             >
               {/* Image with Social Overlay */}
-              <div
-                style={{
-                  position: 'relative',
-                  aspectRatio: '1 / 1',
-                  overflow: 'hidden',
-                }}
-                className="chef-img-wrapper"
-              >
+              <div className="chef-img-square chef-img-wrapper">
                 <Image
                   src={chef.image}
                   alt={chef.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 360px"
                   style={{
                     objectFit: 'cover',
+                    objectPosition: 'center 18%',
                     transition: 'transform 0.5s ease',
                   }}
                   className="chef-portrait"

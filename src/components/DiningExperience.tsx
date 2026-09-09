@@ -102,39 +102,31 @@ export default function DiningExperience({ onOpenLightbox, onOpenReservation }: 
           </div>
 
           {/* Right: 4-Photo Mosaic Grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '16px',
-            }}
-          >
-            {GALLERY_IMAGES.map((img, idx) => (
-              <div
-                key={idx}
-                onClick={() => onOpenLightbox(img.full, img.caption)}
-                style={{
-                  position: 'relative',
-                  aspectRatio: '1 / 1',
-                  overflow: 'hidden',
-                  borderRadius: '3px',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-                  cursor: 'pointer',
-                  backgroundColor: '#eae6df',
-                }}
-                className="mosaic-item"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  style={{
-                    objectFit: 'cover',
-                    transition: 'transform 0.5s ease',
-                  }}
-                  className="mosaic-img"
-                />
+          <div className="mosaic-gallery-grid">
+            {GALLERY_IMAGES.map((img, idx) => {
+              // Custom objectPosition tuning for gallery items
+              let objPos = 'center';
+              if (img.src.includes('restaurant-front')) objPos = 'center 62%';
+              else if (img.src.includes('chicken-tagine')) objPos = 'center 40%';
+
+              return (
+                <div
+                  key={idx}
+                  onClick={() => onOpenLightbox(img.full, img.caption)}
+                  className="mosaic-square-item mosaic-item"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 35vw, 260px"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: objPos,
+                      transition: 'transform 0.5s ease',
+                    }}
+                    className="mosaic-img"
+                  />
 
                 {/* Mask on hover */}
                 <div
@@ -182,7 +174,8 @@ export default function DiningExperience({ onOpenLightbox, onOpenReservation }: 
                   </span>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         </div>
       </div>

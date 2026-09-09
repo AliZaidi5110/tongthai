@@ -34,3 +34,6 @@ next-env.d.ts
 # preview downloads
 Capella _ Restaurant WordPress Preview - ThemeForest_files/
 Capella _ Restaurant WordPress Preview - ThemeForest.html
+
+.vercel
+.env*.local

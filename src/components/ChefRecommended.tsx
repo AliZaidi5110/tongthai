@@ -50,6 +50,7 @@ export default function ChefRecommended({ onOpenLightbox }: ChefRecommendedProps
                     alt={dish.title}
                     width={490}
                     height={314}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                     style={{
                       width: '100%',
                       height: '100%',

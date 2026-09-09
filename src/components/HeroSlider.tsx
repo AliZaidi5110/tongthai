@@ -74,14 +74,7 @@ export default function HeroSlider() {
 
   return (
     <section
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: '680px',
-        overflow: 'hidden',
-        backgroundColor: '#0a0a0a',
-      }}
+      className="hero-slider-section"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -103,25 +96,19 @@ export default function HeroSlider() {
               overflow: 'hidden',
             }}
           >
-            {/* Optimized Next.js Hero Image */}
+            {/* Optimized Responsive Next.js Hero Image */}
             <Image
               src={slide.bgImage}
               alt={slide.scriptTitle}
               fill
               priority={idx === 0}
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 1920px"
               quality={75}
-              style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+              className={`hero-bg-img hero-bg-img-${slide.id}`}
+              style={{ zIndex: 0 }}
             />
             {/* Cinematic Gradient Overlays */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background:
-                  'radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%), linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%)',
-              }}
-            />
+            <div className="hero-slide-overlay" />
 
             {/* Slide Content */}
             <div
@@ -136,17 +123,19 @@ export default function HeroSlider() {
                 textAlign: 'center',
                 color: '#ffffff',
                 paddingTop: '60px',
+                paddingLeft: '20px',
+                paddingRight: '20px',
               }}
             >
               {/* Script Title */}
               <h1
                 style={{
                   fontFamily: 'var(--font-script)',
-                  fontSize: 'clamp(3.8rem, 8vw, 7.5rem)',
+                  fontSize: 'clamp(2.5rem, 7vw, 7.5rem)',
                   fontWeight: 400,
                   lineHeight: 1.05,
                   color: '#ffffff',
-                  textShadow: '0 4px 20px rgba(0,0,0,0.6)',
+                  textShadow: '0 4px 20px rgba(0,0,0,0.7)',
                   marginBottom: '10px',
                   opacity: isActive ? 1 : 0,
                   transform: isActive ? 'translateY(0)' : 'translateY(-20px)',
@@ -237,6 +226,7 @@ export default function HeroSlider() {
       <button
         onClick={prevSlide}
         aria-label="Previous slide"
+        className="hero-nav-arrow"
         style={{
           position: 'absolute',
           left: '24px',
@@ -248,7 +238,6 @@ export default function HeroSlider() {
           backgroundColor: 'rgba(0, 0, 0, 0.35)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
           color: '#ffffff',
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 10,
@@ -269,6 +258,7 @@ export default function HeroSlider() {
       <button
         onClick={nextSlide}
         aria-label="Next slide"
+        className="hero-nav-arrow"
         style={{
           position: 'absolute',
           right: '24px',
@@ -280,7 +270,6 @@ export default function HeroSlider() {
           backgroundColor: 'rgba(0, 0, 0, 0.35)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
           color: '#ffffff',
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 10,

@@ -61,6 +61,7 @@ export default function HomePage() {
         image="/images/shutterstock_178075700.jpg"
         title="Chef Recommended"
         subtitle="Signature Royal Thai dishes recommended by our master chefs"
+        objectPosition="center 45%"
       />
 
       {/* 3-Column Classic Menu Cards */}
@@ -71,6 +72,7 @@ export default function HomePage() {
         image="/images/photodune-5087439-chicken-tagine-m.jpg"
         title="Popular Thai Dishes"
         subtitle="Our most beloved curries, noodles, stir-fries & drinks"
+        objectPosition="center 38%"
       />
 
       {/* 2-Column Dotted Leader Menu */}
@@ -81,6 +83,7 @@ export default function HomePage() {
         image="/images/shutterstock_174816359.jpg"
         title="Fresh Thai Herbs"
         subtitle="Hand-pounded galangal, lemongrass, sweet basil & kaffir lime"
+        objectPosition="center 50%"
       />
 
       {/* Dining Experience & 4-Photo Mosaic Gallery */}
