@@ -24,8 +24,8 @@ export default function ChefTeam() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(12, 12, 12, 0.86)',
-          backdropFilter: 'blur(2px)',
+          backgroundColor: 'rgba(15, 15, 15, 0.62)',
+          backdropFilter: 'blur(1px)',
           zIndex: 1,
         }}
       />
