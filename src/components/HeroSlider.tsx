@@ -1,0 +1,356 @@
+'use client';
+
+import React, { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+interface Slide {
+  id: number;
+  bgImage: string;
+  scriptTitle: string;
+  subHeader?: string;
+  description: string;
+  primaryCtaText: string;
+  primaryCtaLink: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+}
+
+const SLIDES: Slide[] = [
+  {
+    id: 1,
+    bgImage: '/images/photodune-5087439-chicken-tagine-m.jpg',
+    scriptTitle: 'Authentic Thai',
+    subHeader: 'ROYAL HERITAGE RECIPES & WOK MASTERY',
+    description: 'Welcome to TongThai Restaurant in Bradford. Indulge in authentic Green Curries, sizzling Pad Thai, and vibrant Thai herbs.',
+    primaryCtaText: 'View Our Menu',
+    primaryCtaLink: '#popular-menu',
+    secondaryCtaText: 'Book A Table',
+    secondaryCtaLink: '#reservation',
+  },
+  {
+    id: 2,
+    bgImage: '/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg',
+    scriptTitle: 'Volcano Duck',
+    subHeader: 'HOUSE CHEF SPECIALITY ON SIZZLING PLATTER',
+    description: 'Crispy roasted duck breast smothered in our signature tamarind chilli reduction with golden shallots and wok vegetables.',
+    primaryCtaText: 'Chef Specials',
+    primaryCtaLink: '#chef-recommended',
+    secondaryCtaText: 'Reserve Table',
+    secondaryCtaLink: '#reservation',
+  },
+  {
+    id: 3,
+    bgImage: '/images/restaurant-front.jpg',
+    scriptTitle: 'Royal Hospitality',
+    subHeader: '198–200 KEIGHLEY ROAD, BRADFORD • 100% HALAL',
+    description: 'A welcoming family-run haven serving handcrafted curries, steamed sea bass, and authentic Thai drinks from Wednesday to Sunday.',
+    primaryCtaText: 'Guest Reviews',
+    primaryCtaLink: '#reviews',
+    secondaryCtaText: 'Contact & Location',
+    secondaryCtaLink: '#contact',
+  },
+];
+
+export default function HeroSlider() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 6500);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
+
+  return (
+    <section
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        minHeight: '680px',
+        overflow: 'hidden',
+        backgroundColor: '#0a0a0a',
+      }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Slides */}
+      {SLIDES.map((slide, idx) => {
+        const isActive = idx === currentSlide;
+        return (
+          <div
+            key={slide.id}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: isActive ? 1 : 0,
+              visibility: isActive ? 'visible' : 'hidden',
+              transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
+              backgroundImage: `url("${slide.bgImage}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              transform: isActive ? 'scale(1.02)' : 'scale(1)',
+              transitionProperty: 'opacity, transform',
+              transitionDuration: '1s, 7s',
+            }}
+          >
+            {/* Cinematic Gradient Overlays */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%), linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%)',
+              }}
+            />
+
+            {/* Slide Content */}
+            <div
+              className="container"
+              style={{
+                position: 'relative',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                color: '#ffffff',
+                paddingTop: '60px',
+              }}
+            >
+              {/* Script Title */}
+              <h1
+                style={{
+                  fontFamily: 'var(--font-script)',
+                  fontSize: 'clamp(3.8rem, 8vw, 7.5rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.05,
+                  color: '#ffffff',
+                  textShadow: '0 4px 20px rgba(0,0,0,0.6)',
+                  marginBottom: '10px',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(-20px)',
+                  transition: 'all 0.8s ease 0.2s',
+                }}
+              >
+                {slide.scriptTitle}
+              </h1>
+
+              {/* Uppercase Subtitle */}
+              {slide.subHeader && (
+                <div
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '4px',
+                    color: 'var(--color-gold)',
+                    marginBottom: '18px',
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'translateY(0)' : 'translateY(-10px)',
+                    transition: 'all 0.8s ease 0.35s',
+                  }}
+                >
+                  {slide.subHeader}
+                </div>
+              )}
+
+              {/* Gold Accent Divider */}
+              <div
+                style={{
+                  width: '60px',
+                  height: '2px',
+                  backgroundColor: 'var(--color-gold)',
+                  marginBottom: '22px',
+                  opacity: isActive ? 1 : 0,
+                  transition: 'all 0.8s ease 0.45s',
+                }}
+              />
+
+              {/* Description */}
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
+                  lineHeight: 1.7,
+                  maxWidth: '720px',
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                  marginBottom: '36px',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(15px)',
+                  transition: 'all 0.8s ease 0.5s',
+                }}
+              >
+                {slide.description}
+              </p>
+
+              {/* Action Buttons */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '16px',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'all 0.8s ease 0.65s',
+                }}
+              >
+                <a href={slide.primaryCtaLink} className="btn-capella-gold" style={{ padding: '15px 36px' }}>
+                  {slide.primaryCtaText}
+                </a>
+                {slide.secondaryCtaText && (
+                  <a href={slide.secondaryCtaLink} className="btn-capella-outline" style={{ padding: '15px 36px' }}>
+                    {slide.secondaryCtaText}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        aria-label="Previous slide"
+        style={{
+          position: 'absolute',
+          left: '24px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: '50px',
+          height: '50px',
+          borderRadius: '50%',
+          backgroundColor: 'rgba(0, 0, 0, 0.35)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10,
+          transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'var(--color-gold)';
+          e.currentTarget.style.borderColor = 'var(--color-gold)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.35)';
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+        }}
+      >
+        <ChevronLeft size={24} />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        aria-label="Next slide"
+        style={{
+          position: 'absolute',
+          right: '24px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: '50px',
+          height: '50px',
+          borderRadius: '50%',
+          backgroundColor: 'rgba(0, 0, 0, 0.35)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10,
+          transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'var(--color-gold)';
+          e.currentTarget.style.borderColor = 'var(--color-gold)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.35)';
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+        }}
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Slide Indicators / Dots */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '30px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: '12px',
+          zIndex: 10,
+        }}
+      >
+        {SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            style={{
+              width: i === currentSlide ? '32px' : '10px',
+              height: '10px',
+              borderRadius: '5px',
+              backgroundColor: i === currentSlide ? 'var(--color-gold)' : 'rgba(255, 255, 255, 0.4)',
+              transition: 'all 0.3s ease',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Progress Line */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '4px',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          zIndex: 10,
+        }}
+      >
+        <div
+          key={currentSlide}
+          style={{
+            height: '100%',
+            backgroundColor: 'var(--color-gold)',
+            width: '100%',
+            animation: isPaused ? 'none' : 'progressTimer 6.5s linear forwards',
+            transformOrigin: 'left',
+          }}
+        />
+      </div>
+
+      <style jsx>{`
+        @keyframes progressTimer {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
