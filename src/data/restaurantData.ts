@@ -29,6 +29,8 @@ export interface Chef {
   socials: {
     facebook?: string;
     instagram?: string;
+    twitter?: string;
+    linkedin?: string;
   };
 }
 
