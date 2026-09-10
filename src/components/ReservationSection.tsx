@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles, ExternalLink } from 'lucide-react';
 
 export default function ReservationSection() {
   const [formData, setFormData] = useState({
@@ -523,6 +523,48 @@ export default function ReservationSection() {
               </div>
             </form>
           )}
+        </div>
+
+        {/* Foodhub Direct Booking Callout */}
+        <div
+          style={{
+            marginTop: '30px',
+            backgroundColor: '#faf8f5',
+            border: '1px dashed var(--color-gold)',
+            borderRadius: '4px',
+            padding: '20px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '16px',
+          }}
+        >
+          <div>
+            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.875rem', fontWeight: 700, color: 'var(--color-text-dark)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              Prefer Booking or Ordering via Foodhub?
+            </div>
+            <div style={{ fontSize: '0.8125rem', color: '#666666' }}>
+              Instant live booking confirmation &amp; doorstep delivery directly on tongthaionline.co.uk
+            </div>
+          </div>
+          <a
+            href="https://tongthaionline.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-capella-gold"
+            style={{
+              padding: '10px 22px',
+              fontSize: '0.75rem',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+            }}
+          >
+            Open Foodhub Portal <ExternalLink size={14} />
+          </a>
         </div>
       </div>
     </section>

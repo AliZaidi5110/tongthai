@@ -269,6 +269,22 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
 
               <li>
                 <a
+                  href="#delivery"
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '0.8125rem',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '2px',
+                    color: 'var(--color-gold)',
+                  }}
+                >
+                  Delivery
+                </a>
+              </li>
+
+              <li>
+                <a
                   href="#reservation"
                   style={{
                     fontFamily: 'var(--font-heading)',
@@ -455,11 +471,29 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             Guest Reviews (4.6★)
           </a>
           <a
+            href="#delivery"
+            onClick={() => setMobileMenuOpen(false)}
+            className="mobile-nav-link"
+            style={{ color: 'var(--color-gold)', borderColor: 'rgba(197, 157, 40, 0.4)' }}
+          >
+            🛵 Foodhub Delivery
+          </a>
+          <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="mobile-nav-link"
           >
             Contact &amp; Location
+          </a>
+
+          <a
+            href="https://tongthaionline.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-capella-gold mobile-drawer-cta"
+            style={{ backgroundColor: '#ff4b2b', borderColor: '#ff4b2b', color: '#ffffff' }}
+          >
+            🛵 Order on Foodhub (Delivery &amp; Collection)
           </a>
 
           <a

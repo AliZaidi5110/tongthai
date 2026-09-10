@@ -211,6 +211,33 @@ export default function Footer() {
                 <Star size={16} fill="var(--color-gold)" color="var(--color-gold)" />
               </a>
             </div>
+
+            {/* Foodhub Online Order Badge */}
+            <div style={{ marginTop: '18px' }}>
+              <a
+                href="https://tongthaionline.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: 'rgba(255, 75, 43, 0.12)',
+                  border: '1px solid rgba(255, 75, 43, 0.35)',
+                  padding: '8px 14px',
+                  borderRadius: '3px',
+                  fontSize: '0.75rem',
+                  fontFamily: 'var(--font-heading)',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <span style={{ color: '#ff4b2b', fontSize: '1rem', lineHeight: 1 }}>🛵</span> Order on Foodhub
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -234,7 +261,7 @@ export default function Footer() {
           }}
         >
           {/* Footer Navigation */}
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
             <a href="#about" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#999' }}>
               About
             </a>
@@ -244,8 +271,19 @@ export default function Footer() {
             <a href="#popular-menu" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#999' }}>
               Menu
             </a>
+            <a href="#delivery" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: 'var(--color-gold)' }}>
+              Delivery
+            </a>
             <a href="#reservation" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#999' }}>
               Reservation
+            </a>
+            <a
+              href="https://tongthaionline.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#ff4b2b', fontWeight: 700 }}
+            >
+              Foodhub Portal ↗
             </a>
           </div>
 

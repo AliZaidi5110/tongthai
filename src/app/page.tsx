@@ -7,6 +7,7 @@ import AboutSection from '../components/AboutSection';
 import ParallaxBanner from '../components/ParallaxBanner';
 import ChefRecommended from '../components/ChefRecommended';
 import PopularDishesMenu from '../components/PopularDishesMenu';
+import FoodhubDeliverySection from '../components/FoodhubDeliverySection';
 import DiningExperience from '../components/DiningExperience';
 import ChefTeam from '../components/ChefTeam';
 import ReviewsSection from '../components/ReviewsSection';
@@ -77,6 +78,9 @@ export default function HomePage() {
 
       {/* 2-Column Dotted Leader Menu */}
       <PopularDishesMenu />
+
+      {/* Official Foodhub Online Delivery, Takeaway & Table Booking Section */}
+      <FoodhubDeliverySection />
 
       {/* Parallax Breakout 3: Ingredients */}
       <ParallaxBanner
