@@ -17,8 +17,8 @@ export default function DiningExperience({ onOpenLightbox, onOpenReservation }: 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '60px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: 'clamp(30px, 5vw, 60px)',
             alignItems: 'center',
           }}
         >

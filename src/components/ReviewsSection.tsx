@@ -68,7 +68,7 @@ export default function ReviewsSection() {
             backgroundColor: '#ffffff',
             border: '1px solid var(--color-border)',
             borderRadius: '4px',
-            padding: '24px 32px',
+            padding: '20px clamp(14px, 4vw, 32px)',
             boxShadow: '0 8px 24px rgba(0,0,0,0.05)',
             display: 'flex',
             alignItems: 'center',
@@ -125,7 +125,7 @@ export default function ReviewsSection() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '24px',
             marginBottom: '40px',
           }}

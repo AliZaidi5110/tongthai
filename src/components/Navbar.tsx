@@ -44,70 +44,35 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
   return (
     <>
       <header
+        className={`site-header ${isScrolled ? 'is-scrolled' : 'not-scrolled'}`}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
+          width: '100%',
           zIndex: 100,
-          transition: 'all 0.35s ease',
-          backgroundColor: isScrolled ? 'rgba(18, 18, 18, 0.96)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-          borderBottom: isScrolled
-            ? '1px solid rgba(255, 255, 255, 0.08)'
-            : '1px solid rgba(255, 255, 255, 0.12)',
-          boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.35)' : 'none',
-          padding: isScrolled ? '14px 0' : '22px 0',
+          transition: 'all 0.3s ease',
         }}
       >
-        <div className="container container-wide" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="container container-wide header-nav-container">
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '14px', zIndex: 10 }}>
-            <div
-              style={{
-                position: 'relative',
-                width: '46px',
-                height: '46px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.5)',
-                border: '1.5px solid var(--color-gold)',
-                flexShrink: 0,
-              }}
-            >
+          <Link href="/" className="header-logo-link">
+            <div className="header-logo-icon">
               <Image
                 src="/images/tongthai-logo.png"
                 alt="TongThai Restaurant Logo"
                 fill
-                sizes="46px"
+                sizes="(max-width: 768px) 36px, 46px"
                 priority
                 style={{ objectFit: 'cover' }}
               />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '1.1875rem',
-                  fontWeight: 800,
-                  letterSpacing: '2.5px',
-                  color: '#ffffff',
-                  lineHeight: 1.1,
-                  textTransform: 'uppercase',
-                }}
-              >
+            <div className="header-logo-text">
+              <span className="header-logo-title">
                 TONGTHAI
               </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontSize: '0.625rem',
-                  fontWeight: 600,
-                  letterSpacing: '2px',
-                  color: 'var(--color-gold)',
-                  textTransform: 'uppercase',
-                }}
-              >
+              <span className="header-logo-subtitle">
                 Authentic Thai Cuisine
               </span>
             </div>
@@ -337,22 +302,14 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           </nav>
 
           {/* Right Action Icons & Book Button */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+          {/* Right Action Icons & Book Button */}
+          <div className="header-actions-group">
             {/* Search Trigger */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               title="Search menu"
-              style={{
-                color: '#ffffff',
-                padding: '8px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#c59d28')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
+              className="header-icon-btn"
+              aria-label="Search menu"
             >
               <Search size={18} />
             </button>
@@ -361,39 +318,13 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             <button
               onClick={openCart}
               title="View food order cart"
-              style={{
-                color: '#ffffff',
-                position: 'relative',
-                padding: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#c59d28')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#ffffff')}
+              className="header-icon-btn"
+              aria-label="View food cart"
+              style={{ position: 'relative' }}
             >
               <ShoppingCart size={19} />
               {totalItems > 0 && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: '-2px',
-                    right: '-4px',
-                    backgroundColor: 'var(--color-gold)',
-                    color: '#ffffff',
-                    fontSize: '0.6875rem',
-                    fontWeight: 700,
-                    minWidth: '18px',
-                    height: '18px',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '0 3px',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.4)',
-                  }}
-                >
+                <span className="header-cart-badge">
                   {totalItems}
                 </span>
               )}
@@ -404,37 +335,19 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               href="#reservation"
               onClick={onOpenReservation}
               className="btn-capella-gold"
-              style={{
-                display: 'none',
-                padding: '10px 22px',
-                fontSize: '0.75rem',
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 600,
-                borderRadius: '2px',
-                alignItems: 'center',
-                gap: '6px',
-              }}
               id="header-book-btn"
             >
               <Calendar size={14} />
               Book a Table
             </a>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{
-                color: '#ffffff',
-                padding: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              className="mobile-toggle-btn"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              className={`mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
             >
-              {mobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <MenuIcon size={22} />}
             </button>
           </div>
         </div>
@@ -491,154 +404,291 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
 
       {/* Mobile Slide-Out Drawer */}
       {mobileMenuOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 99,
-            backgroundColor: 'rgba(10, 10, 10, 0.98)',
-            paddingTop: '90px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            gap: '24px',
-            animation: 'fadeIn 0.3s ease',
-          }}
-        >
+        <div className="mobile-menu-drawer">
           <a
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: 'var(--color-gold)',
-            }}
+            className="mobile-nav-link active"
           >
             Home
           </a>
           <a
             href="#chef-recommended"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             Chef Recommended
           </a>
           <a
             href="#popular-menu"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             Full Menu
           </a>
           <a
             href="#about"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             About Us
           </a>
           <a
             href="#chefs"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             Our Chef
           </a>
           <a
             href="#experience"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             Dining Experience
           </a>
           <a
             href="#reviews"
             onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
+            className="mobile-nav-link"
           >
             Guest Reviews (4.6★)
           </a>
+          <a
+            href="#contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="mobile-nav-link"
+          >
+            Contact &amp; Location
+          </a>
+
           <a
             href="#reservation"
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenReservation?.();
             }}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: 'var(--color-gold)',
-            }}
+            className="btn-capella-gold mobile-drawer-cta"
           >
-            Reservation
+            <Calendar size={16} /> Book Table Now
           </a>
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.125rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '3px',
-              color: '#ffffff',
-            }}
-          >
-            Contact
+
+          <a href="tel:01274499088" className="mobile-drawer-phone">
+            📞 01274 499088 • 198–200 Keighley Rd
           </a>
         </div>
       )}
 
       <style jsx global>{`
+        /* Header Base */
+        .site-header {
+          padding: 10px 0;
+          background-color: rgba(14, 14, 14, 0.94);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+        }
+
+        @media (min-width: 992px) {
+          .site-header.not-scrolled {
+            background-color: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: none;
+            padding: 22px 0;
+          }
+          .site-header.is-scrolled {
+            background-color: rgba(18, 18, 18, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            padding: 14px 0;
+          }
+        }
+
+        .header-nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding-left: 12px;
+          padding-right: 12px;
+          gap: 8px;
+        }
+
+        @media (min-width: 769px) {
+          .header-nav-container {
+            padding-left: 24px;
+            padding-right: 24px;
+            gap: 20px;
+          }
+        }
+
+        /* Logo Link */
+        .header-logo-link {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          z-index: 10;
+          min-width: 0;
+          flex-shrink: 1;
+        }
+
+        @media (min-width: 769px) {
+          .header-logo-link {
+            gap: 14px;
+          }
+        }
+
+        .header-logo-icon {
+          position: relative;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          overflow: hidden;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+          border: 1.5px solid var(--color-gold);
+          flex-shrink: 0;
+        }
+
+        @media (min-width: 769px) {
+          .header-logo-icon {
+            width: 46px;
+            height: 46px;
+          }
+        }
+
+        .header-logo-text {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+        }
+
+        .header-logo-title {
+          font-family: var(--font-heading);
+          font-size: 1.05rem;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          color: #ffffff;
+          line-height: 1.1;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        @media (min-width: 769px) {
+          .header-logo-title {
+            font-size: 1.1875rem;
+            letter-spacing: 2.5px;
+          }
+        }
+
+        .header-logo-subtitle {
+          font-family: var(--font-heading);
+          font-size: 0.5625rem;
+          font-weight: 600;
+          letter-spacing: 1.2px;
+          color: var(--color-gold);
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        @media (min-width: 769px) {
+          .header-logo-subtitle {
+            font-size: 0.625rem;
+            letter-spacing: 2px;
+          }
+        }
+
+        /* Actions */
+        .header-actions-group {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          flex-shrink: 0;
+        }
+
+        @media (min-width: 769px) {
+          .header-actions-group {
+            gap: 16px;
+          }
+        }
+
+        .header-icon-btn {
+          color: #ffffff;
+          padding: 7px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+          background: transparent;
+        }
+
+        .header-icon-btn:hover {
+          color: var(--color-gold);
+          background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .header-cart-badge {
+          position: absolute;
+          top: -2px;
+          right: -4px;
+          background-color: var(--color-gold);
+          color: #ffffff;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          min-width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 3px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        /* Hamburger Toggle Button */
+        .mobile-toggle-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 38px !important;
+          height: 38px !important;
+          min-width: 38px !important;
+          border-radius: 4px !important;
+          background-color: rgba(197, 157, 40, 0.16) !important;
+          border: 1.5px solid var(--color-gold) !important;
+          color: var(--color-gold) !important;
+          flex-shrink: 0 !important;
+          cursor: pointer !important;
+          margin-left: 2px !important;
+          transition: all 0.2s ease !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .mobile-toggle-btn.is-active,
+        .mobile-toggle-btn:hover,
+        .mobile-toggle-btn:active {
+          background-color: var(--color-gold) !important;
+          color: #ffffff !important;
+        }
+
+        #header-book-btn {
+          display: none;
+          padding: 10px 22px;
+          font-size: 0.75rem;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          border-radius: 2px;
+          align-items: center;
+          gap: 6px;
+        }
+
         @media (min-width: 992px) {
           .desktop-nav {
             display: block !important;
@@ -649,6 +699,70 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           .mobile-toggle-btn {
             display: none !important;
           }
+        }
+
+        /* Mobile Drawer */
+        .mobile-menu-drawer {
+          position: fixed;
+          inset: 0;
+          z-index: 99;
+          background-color: rgba(12, 12, 12, 0.98);
+          padding: 75px 16px 36px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 12px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          animation: fadeIn 0.25s ease;
+        }
+
+        .mobile-nav-link {
+          font-family: var(--font-heading);
+          font-size: 0.9375rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #e5e5e5;
+          width: 100%;
+          max-width: 340px;
+          text-align: center;
+          padding: 12px 16px;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          transition: all 0.2s ease;
+          display: block;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active,
+        .mobile-nav-link.active {
+          color: var(--color-gold);
+          border-color: rgba(197, 157, 40, 0.4);
+          background-color: rgba(197, 157, 40, 0.1);
+        }
+
+        .mobile-drawer-cta {
+          margin-top: 10px;
+          width: 100%;
+          max-width: 340px;
+          padding: 14px 20px;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .mobile-drawer-phone {
+          font-family: var(--font-heading);
+          font-size: 0.75rem;
+          color: #999999;
+          margin-top: 8px;
+          letter-spacing: 1px;
+          text-decoration: none;
         }
       `}</style>
     </>
