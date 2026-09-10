@@ -79,29 +79,14 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav style={{ display: 'none' }} className="desktop-nav">
-            <ul
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '30px',
-                listStyle: 'none',
-                margin: 0,
-                padding: 0,
-              }}
-            >
+          <nav className="desktop-nav">
+            <ul className="desktop-nav-list">
               <li>
                 <Link
                   href="/"
+                  className="desktop-nav-link"
                   style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
                     color: '#ffffff',
-                    position: 'relative',
-                    padding: '8px 0',
                     borderBottom: '2px solid var(--color-gold)',
                   }}
                 >
@@ -117,21 +102,11 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               >
                 <a
                   href="#chef-recommended"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    padding: '8px 0',
-                  }}
+                  className="desktop-nav-link"
+                  style={{ gap: '4px' }}
                 >
                   Menu
-                  <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: menuDropdownOpen ? 'rotate(180deg)' : 'none' }} />
+                  <ChevronDown size={13} style={{ transition: 'transform 0.2s', transform: menuDropdownOpen ? 'rotate(180deg)' : 'none' }} />
                 </a>
 
                 {menuDropdownOpen && (
@@ -139,7 +114,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
                     style={{
                       position: 'absolute',
                       top: '100%',
-                      left: '-20px',
+                      left: '-10px',
                       backgroundColor: '#181818',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
                       boxShadow: '0 12px 30px rgba(0,0,0,0.5)',
@@ -204,65 +179,25 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               </li>
 
               <li>
-                <a
-                  href="#about"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
+                <a href="#about" className="desktop-nav-link">
                   About
                 </a>
               </li>
 
               <li>
-                <a
-                  href="#chefs"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
+                <a href="#chefs" className="desktop-nav-link">
                   Our Chef
                 </a>
               </li>
 
               <li>
-                <a
-                  href="#experience"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
+                <a href="#experience" className="desktop-nav-link">
                   Gallery
                 </a>
               </li>
 
               <li>
-                <a
-                  href="#reviews"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
+                <a href="#reviews" className="desktop-nav-link">
                   Reviews
                 </a>
               </li>
@@ -270,47 +205,15 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               <li>
                 <a
                   href="#delivery"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'var(--color-gold)',
-                  }}
+                  className="desktop-nav-link"
+                  style={{ color: 'var(--color-gold)' }}
                 >
                   Delivery
                 </a>
               </li>
 
               <li>
-                <a
-                  href="#reservation"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
-                  Reservation
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                  }}
-                >
+                <a href="#contact" className="desktop-nav-link">
                   Contact
                 </a>
               </li>
@@ -548,33 +451,21 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          padding-left: 12px;
-          padding-right: 12px;
-          gap: 8px;
+          max-width: 1440px;
+          margin: 0 auto;
+          padding-left: clamp(12px, 2vw, 32px);
+          padding-right: clamp(12px, 2vw, 32px);
+          gap: clamp(8px, 1.4vw, 20px);
         }
 
-        @media (min-width: 769px) {
-          .header-nav-container {
-            padding-left: 24px;
-            padding-right: 24px;
-            gap: 20px;
-          }
-        }
-
-        /* Logo Link */
+        /* Logo Link - Always preserve full logo width, never shrink */
         .header-logo-link {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: clamp(8px, 1vw, 14px);
           z-index: 10;
-          min-width: 0;
-          flex-shrink: 1;
-        }
-
-        @media (min-width: 769px) {
-          .header-logo-link {
-            gap: 14px;
-          }
+          flex-shrink: 0 !important;
+          text-decoration: none;
         }
 
         .header-logo-icon {
@@ -585,7 +476,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           overflow: hidden;
           box-shadow: 0 2px 10px rgba(0,0,0,0.5);
           border: 1.5px solid var(--color-gold);
-          flex-shrink: 0;
+          flex-shrink: 0 !important;
         }
 
         @media (min-width: 769px) {
@@ -598,56 +489,74 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
         .header-logo-text {
           display: flex;
           flex-direction: column;
-          min-width: 0;
+          flex-shrink: 0 !important;
         }
 
         .header-logo-title {
           font-family: var(--font-heading);
-          font-size: 1.05rem;
+          font-size: clamp(1rem, 1.2vw, 1.1875rem);
           font-weight: 800;
-          letter-spacing: 1.5px;
+          letter-spacing: clamp(1.2px, 0.15vw, 2.2px);
           color: #ffffff;
           line-height: 1.1;
           text-transform: uppercase;
           white-space: nowrap;
         }
 
-        @media (min-width: 769px) {
-          .header-logo-title {
-            font-size: 1.1875rem;
-            letter-spacing: 2.5px;
-          }
-        }
-
         .header-logo-subtitle {
           font-family: var(--font-heading);
-          font-size: 0.5625rem;
+          font-size: clamp(0.5rem, 0.6vw, 0.625rem);
           font-weight: 600;
-          letter-spacing: 1.2px;
+          letter-spacing: clamp(1px, 0.12vw, 1.8px);
           color: var(--color-gold);
           text-transform: uppercase;
           white-space: nowrap;
         }
 
-        @media (min-width: 769px) {
-          .header-logo-subtitle {
-            font-size: 0.625rem;
-            letter-spacing: 2px;
-          }
+        /* Desktop Navigation Container */
+        .desktop-nav {
+          display: none;
+          flex: 1 1 auto;
+          justify-content: center;
+          margin: 0 clamp(6px, 1vw, 18px);
+          min-width: 0;
         }
 
-        /* Actions */
+        .desktop-nav-list {
+          display: flex;
+          align-items: center;
+          gap: clamp(8px, 1.2vw, 22px);
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          white-space: nowrap;
+        }
+
+        .desktop-nav-link {
+          font-family: var(--font-heading);
+          font-size: clamp(0.6875rem, 0.78vw, 0.8125rem);
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: clamp(0.8px, 0.08vw, 1.4px);
+          color: rgba(255, 255, 255, 0.85);
+          white-space: nowrap;
+          padding: 6px 2px;
+          transition: color 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        .desktop-nav-link:hover {
+          color: var(--color-gold);
+        }
+
+        /* Actions Group */
         .header-actions-group {
           display: flex;
           align-items: center;
-          gap: 6px;
-          flex-shrink: 0;
-        }
-
-        @media (min-width: 769px) {
-          .header-actions-group {
-            gap: 16px;
-          }
+          gap: clamp(6px, 1vw, 14px);
+          flex-shrink: 0 !important;
         }
 
         .header-icon-btn {
@@ -659,6 +568,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           justify-content: center;
           transition: all 0.2s ease;
           background: transparent;
+          flex-shrink: 0;
         }
 
         .header-icon-btn:hover {
@@ -712,20 +622,24 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
 
         #header-book-btn {
           display: none;
-          padding: 10px 22px;
-          font-size: 0.75rem;
-          letter-spacing: 1.5px;
+          padding: clamp(8px, 0.8vw, 11px) clamp(12px, 1.2vw, 22px);
+          font-size: clamp(0.6875rem, 0.75vw, 0.75rem);
+          letter-spacing: clamp(1px, 0.1vw, 1.5px);
           text-transform: uppercase;
           font-family: var(--font-heading);
           font-weight: 600;
           border-radius: 2px;
           align-items: center;
           gap: 6px;
+          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
 
         @media (min-width: 992px) {
           .desktop-nav {
-            display: block !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
           }
           #header-book-btn {
             display: inline-flex !important;
