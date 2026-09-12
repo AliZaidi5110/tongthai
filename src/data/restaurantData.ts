@@ -41,7 +41,7 @@ export const RESTAURANT_INFO = {
   phone1: '01274 499088',
   phone2: '07506 288133',
   email: 'info@tongthairestaurant.co.uk',
-  website: 'https://www.tongthairestaurant.co.uk/',
+  website: 'https://www.tongthaionline.com/',
   googleSearchUrl: 'https://www.google.com/search?q=tong+thai+restaurant+bradford+',
   facebookUrl: 'https://www.facebook.com/tongthaibradford',
   instagramUrl: 'https://www.instagram.com/tongthaibradford',

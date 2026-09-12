@@ -9,6 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.tongthaionline.com'),
   title: 'TongThai Restaurant | Authentic Thai Cuisine - Bradford BD9',
   description:
     'Experience authentic Royal Thai dining at TongThai Restaurant, 198–200 Keighley Road, Bradford BD9. Hand-pounded curry pastes, wok-flamed Pad Thai, fresh seafood, 100% Halal food, and online table reservations.',
