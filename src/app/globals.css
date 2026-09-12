@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Yellowtail&display=swap');
-
+/* Fonts loaded via next/font/google in layout.tsx for zero layout shift (CLS 0) & fast LCP */
 :root {
-  --font-script: 'Yellowtail', cursive;
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Raleway', sans-serif;
+  --font-script: var(--font-script), 'Yellowtail', cursive;
+  --font-heading: var(--font-heading), 'Montserrat', sans-serif;
+  --font-body: var(--font-body), 'Raleway', sans-serif;
 
   --color-primary: #1a1a1a;
   --color-secondary: #2c2c2c;
@@ -11,9 +10,9 @@
   --color-gold-light: #e0b84c;
   --color-gold-dark: #997415;
   --color-accent: #ff7302;
-  --color-text: #4a4a4a;
-  --color-text-dark: #1f1f1f;
-  --color-text-muted: #777777;
+  --color-text: #333333;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #595959;
   --color-text-light: #f5f5f5;
   --color-border: #e6e4df;
   --color-border-dark: rgba(255, 255, 255, 0.15);
@@ -48,6 +47,50 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background-color: var(--color-gold);
+  color: #1a1a1a;
+  padding: 12px 22px;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid #ffffff;
+}
+
+/* Accessibility Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Typography Utilities */
@@ -87,7 +130,6 @@ button {
   cursor: pointer;
   border: none;
   background: none;
-  outline: none;
 }
 
 html, body {

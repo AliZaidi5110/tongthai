@@ -30,7 +30,8 @@ export default function ParallaxBanner({
     >
       <Image
         src={image}
-        alt={title}
+        alt=""
+        aria-hidden="true"
         fill
         sizes="(max-width: 768px) 100vw, 1920px"
         quality={75}

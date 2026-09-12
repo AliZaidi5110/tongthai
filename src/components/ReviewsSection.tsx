@@ -92,13 +92,18 @@ export default function ReviewsSection() {
                 fontWeight: 800,
                 fontFamily: 'var(--font-heading)',
               }}
+              aria-label="4.6 out of 5 rating"
             >
               4.6
             </div>
             <div>
-              <div style={{ display: 'flex', gap: '3px', marginBottom: '4px' }}>
+              <div
+                style={{ display: 'flex', gap: '3px', marginBottom: '4px' }}
+                role="img"
+                aria-label="5 out of 5 stars"
+              >
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} fill="#fbbc04" color="#fbbc04" />
+                  <Star key={i} size={18} fill="#fbbc04" color="#fbbc04" aria-hidden="true" />
                 ))}
               </div>
               <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.8125rem', fontWeight: 700, color: '#333' }}>
@@ -114,10 +119,11 @@ export default function ReviewsSection() {
             href={RESTAURANT_INFO.googleSearchUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Read TongThai verified Google reviews (opens in new tab)"
             className="btn-capella-gold"
             style={{ padding: '10px 20px', fontSize: '0.6875rem' }}
           >
-            Google Reviews <ExternalLink size={13} style={{ marginLeft: '4px' }} />
+            Google Reviews <ExternalLink size={13} style={{ marginLeft: '4px' }} aria-hidden="true" />
           </a>
         </div>
 
@@ -148,9 +154,13 @@ export default function ReviewsSection() {
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                  <div style={{ display: 'flex', gap: '2px' }}>
+                  <div
+                    style={{ display: 'flex', gap: '2px' }}
+                    role="img"
+                    aria-label={`${rev.rating} out of 5 stars`}
+                  >
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={15} fill="#fbbc04" color="#fbbc04" />
+                      <Star key={i} size={15} fill="#fbbc04" color="#fbbc04" aria-hidden="true" />
                     ))}
                   </div>
                   <span
@@ -170,7 +180,7 @@ export default function ReviewsSection() {
                   </span>
                 </div>
 
-                <div style={{ marginBottom: '16px', color: 'var(--color-gold)' }}>
+                <div style={{ marginBottom: '16px', color: 'var(--color-gold)' }} aria-hidden="true">
                   <MessageSquareQuote size={28} />
                 </div>
 
@@ -214,6 +224,7 @@ export default function ReviewsSection() {
             href={RESTAURANT_INFO.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="TongThai Bradford on Facebook (opens in new tab)"
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: '0.75rem',
@@ -231,6 +242,7 @@ export default function ReviewsSection() {
             href={RESTAURANT_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="TongThai Bradford on Instagram (opens in new tab)"
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: '0.75rem',

@@ -38,10 +38,20 @@ export default function PopularDishesMenu() {
       className="menu-item-row"
     >
       <div className="menu-dot-row">
-        <span className="menu-dot-title">
+        <h3
+          className="menu-dot-title"
+          style={{
+            display: 'inline',
+            margin: 0,
+            fontSize: 'inherit',
+            fontWeight: 'inherit',
+            fontFamily: 'inherit',
+            letterSpacing: 'inherit',
+          }}
+        >
           {dish.title}
           {dish.thaiName && (
-            <span style={{ fontSize: '0.8125rem', fontStyle: 'italic', color: '#999', marginLeft: '6px', fontWeight: 400 }}>
+            <span style={{ fontSize: '0.8125rem', fontStyle: 'italic', color: '#666', marginLeft: '6px', fontWeight: 400 }}>
               ({dish.thaiName})
             </span>
           )}
@@ -56,7 +66,7 @@ export default function PopularDishesMenu() {
               {dish.badge}
             </span>
           )}
-        </span>
+        </h3>
 
         <span className="menu-dot-leader" />
 
@@ -65,7 +75,8 @@ export default function PopularDishesMenu() {
         {/* Quick Add Button */}
         <button
           onClick={() => addToCart(dish)}
-          title="Add to order"
+          title={`Add ${dish.title} to order`}
+          aria-label={`Add ${dish.title} to order`}
           style={{
             marginLeft: '12px',
             width: '28px',
@@ -89,7 +100,7 @@ export default function PopularDishesMenu() {
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: '0.875rem',
-          color: '#888888',
+          color: '#666666',
           marginTop: '4px',
         }}
       >
@@ -103,6 +114,8 @@ export default function PopularDishesMenu() {
       <div className="container">
         {/* Category Filter Tabs */}
         <div
+          role="tablist"
+          aria-label="Menu categories"
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -116,6 +129,10 @@ export default function PopularDishesMenu() {
             return (
               <button
                 key={cat.id}
+                role="tab"
+                id={`tab-${cat.id}`}
+                aria-selected={isActive}
+                aria-controls="menu-dishes-panel"
                 onClick={() => setActiveCategory(cat.id)}
                 style={{
                   fontFamily: 'var(--font-heading)',
@@ -139,6 +156,9 @@ export default function PopularDishesMenu() {
 
         {/* 2-Column Classic Menu Grid */}
         <div
+          id="menu-dishes-panel"
+          role="tabpanel"
+          aria-labelledby={`tab-${activeCategory}`}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',

@@ -81,12 +81,12 @@ export default function Footer() {
               Address
             </h3>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', lineHeight: 1.8 }}>
-              <MapPin size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
-              <p style={{ fontSize: '0.9375rem', color: '#cccccc' }}>
+              <MapPin size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} aria-hidden="true" />
+              <address style={{ fontStyle: 'normal', fontSize: '0.9375rem', color: '#cccccc' }}>
                 198–200 Keighley Road,<br />
                 Bradford, BD9 4JZ<br />
                 United Kingdom
-              </p>
+              </address>
             </div>
           </div>
 
@@ -109,7 +109,7 @@ export default function Footer() {
               Open Hours
             </h3>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', marginBottom: '16px' }}>
-              <Clock size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
+              <Clock size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} aria-hidden="true" />
               <div style={{ fontSize: '0.9375rem', color: '#cccccc', lineHeight: 1.6 }}>
                 <div>Wednesday – Sunday: 3:00 PM – 9:00 PM</div>
                 <div style={{ color: '#ff6b6b' }}>Monday &amp; Tuesday: Closed</div>
@@ -120,10 +120,26 @@ export default function Footer() {
             </div>
 
             <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-              <Phone size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
+              <Phone size={20} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '4px' }} aria-hidden="true" />
               <div style={{ fontSize: '0.9375rem', color: '#cccccc', lineHeight: 1.6 }}>
-                <div><a href="tel:01274499088" style={{ color: '#ffffff' }}>01274 499088</a></div>
-                <div><a href="tel:07506288133" style={{ color: '#ffffff' }}>07506 288133</a></div>
+                <div>
+                  <a
+                    href="tel:01274499088"
+                    aria-label="Call TongThai primary phone number 01274 499088"
+                    style={{ color: '#ffffff' }}
+                  >
+                    01274 499088
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="tel:07506288133"
+                    aria-label="Call TongThai mobile number 07506 288133"
+                    style={{ color: '#ffffff' }}
+                  >
+                    07506 288133
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -154,7 +170,7 @@ export default function Footer() {
                 href={RESTAURANT_INFO.facebookUrl}
                 target="_blank"
                 rel="noreferrer"
-                title="TongThai Facebook @tongthaibradford"
+                aria-label="TongThai Facebook page (opens in new tab)"
                 style={{
                   width: '38px',
                   height: '38px',
@@ -168,13 +184,13 @@ export default function Footer() {
                 }}
                 className="social-btn"
               >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
               <a
                 href={RESTAURANT_INFO.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
-                title="TongThai Instagram @tongthaibradford"
+                aria-label="TongThai Instagram page (opens in new tab)"
                 style={{
                   width: '38px',
                   height: '38px',
@@ -188,13 +204,13 @@ export default function Footer() {
                 }}
                 className="social-btn"
               >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
               <a
                 href={RESTAURANT_INFO.googleSearchUrl}
                 target="_blank"
                 rel="noreferrer"
-                title="TongThai on Google (4.6 Stars, 300+ Reviews)"
+                aria-label="TongThai verified Google profile and reviews (opens in new tab)"
                 style={{
                   width: '38px',
                   height: '38px',
@@ -208,7 +224,7 @@ export default function Footer() {
                 }}
                 className="social-btn"
               >
-                <Star size={16} fill="var(--color-gold)" color="var(--color-gold)" />
+                <Star size={16} fill="var(--color-gold)" color="var(--color-gold)" aria-hidden="true" />
               </a>
             </div>
 
@@ -218,6 +234,7 @@ export default function Footer() {
                 href="https://tongthaionline.co.uk/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Order online for delivery or collection on Foodhub (opens in new tab)"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -235,7 +252,7 @@ export default function Footer() {
                   transition: 'all 0.2s ease',
                 }}
               >
-                <span style={{ color: '#ff4b2b', fontSize: '1rem', lineHeight: 1 }}>🛵</span> Order on Foodhub
+                <span style={{ color: '#ff4b2b', fontSize: '1rem', lineHeight: 1 }} aria-hidden="true">🛵</span> Order on Foodhub
               </a>
             </div>
           </div>
@@ -261,7 +278,7 @@ export default function Footer() {
           }}
         >
           {/* Footer Navigation */}
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <nav aria-label="Footer Navigation" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
             <a href="#about" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#999' }}>
               About
             </a>
@@ -281,11 +298,12 @@ export default function Footer() {
               href="https://tongthaionline.co.uk/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Foodhub Online Ordering Portal (opens in new tab)"
               style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#ff4b2b', fontWeight: 700 }}
             >
               Foodhub Portal ↗
             </a>
-          </div>
+          </nav>
 
           {/* Copyright */}
           <div style={{ fontSize: '0.8125rem', color: '#666' }}>
@@ -295,7 +313,7 @@ export default function Footer() {
           {/* Scroll To Top */}
           <button
             onClick={scrollToTop}
-            title="Back to top"
+            aria-label="Back to top of page"
             style={{
               width: '36px',
               height: '36px',
@@ -306,10 +324,12 @@ export default function Footer() {
               alignItems: 'center',
               justifyContent: 'center',
               transition: 'transform 0.2s',
+              border: 'none',
+              cursor: 'pointer',
             }}
             className="scroll-top-btn"
           >
-            <ChevronUp size={20} />
+            <ChevronUp size={20} aria-hidden="true" />
           </button>
         </div>
       </div>

@@ -14,6 +14,8 @@ import ReviewsSection from '../components/ReviewsSection';
 import ReservationSection from '../components/ReservationSection';
 import CartDrawer from '../components/CartDrawer';
 import LightboxModal from '../components/LightboxModal';
+import FaqSection from '../components/FaqSection';
+import MobileActionBar from '../components/MobileActionBar';
 import Footer from '../components/Footer';
 
 export default function HomePage() {
@@ -50,6 +52,9 @@ export default function HomePage() {
     <main style={{ position: 'relative', overflowX: 'hidden' }}>
       {/* Header & Sticky Navbar */}
       <Navbar onOpenReservation={handleScrollToReservation} />
+
+      {/* Target for Skip to Content link */}
+      <div id="main-content" tabIndex={-1} style={{ outline: 'none' }} />
 
       {/* Hero Slider (Recreating Slider Revolution) */}
       <HeroSlider />
@@ -102,6 +107,9 @@ export default function HomePage() {
       {/* Guest Reviews & Google 4.6-Star Rating Section */}
       <ReviewsSection />
 
+      {/* Frequently Asked Questions (FAQPage schema alignment) */}
+      <FaqSection />
+
       {/* Online Table Reservation Section */}
       <ReservationSection />
 
@@ -118,6 +126,9 @@ export default function HomePage() {
 
       {/* Footer & Back to Top */}
       <Footer />
+
+      {/* Mobile Sticky Quick Action Bar */}
+      <MobileActionBar />
     </main>
   );
 }

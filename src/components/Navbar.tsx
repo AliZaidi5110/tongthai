@@ -30,6 +30,18 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (mobileMenuOpen) setMobileMenuOpen(false);
+        if (searchOpen) setSearchOpen(false);
+        if (menuDropdownOpen) setMenuDropdownOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen, searchOpen, menuDropdownOpen]);
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -43,6 +55,10 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <header
         className={`site-header ${isScrolled ? 'is-scrolled' : 'not-scrolled'}`}
         style={{
@@ -57,11 +73,11 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
       >
         <div className="container container-wide header-nav-container">
           {/* Logo */}
-          <Link href="/" className="header-logo-link">
+          <Link href="/" className="header-logo-link" aria-label="TongThai Restaurant Bradford Home">
             <div className="header-logo-icon">
               <Image
                 src="/images/tongthai-logo.png"
-                alt="TongThai Restaurant Logo"
+                alt="TongThai Restaurant Bradford Logo"
                 fill
                 sizes="(max-width: 768px) 36px, 46px"
                 priority
@@ -79,7 +95,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="desktop-nav">
+          <nav className="desktop-nav" aria-label="Main Navigation">
             <ul className="desktop-nav-list">
               <li>
                 <Link
@@ -104,6 +120,12 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
                   href="#chef-recommended"
                   className="desktop-nav-link"
                   style={{ gap: '4px' }}
+                  aria-haspopup="true"
+                  aria-expanded={menuDropdownOpen}
+                  onFocus={() => setMenuDropdownOpen(true)}
+                  onClick={(e) => {
+                    setMenuDropdownOpen((prev) => !prev);
+                  }}
                 >
                   Menu
                   <ChevronDown size={13} style={{ transition: 'transform 0.2s', transform: menuDropdownOpen ? 'rotate(180deg)' : 'none' }} />
@@ -228,7 +250,8 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               onClick={() => setSearchOpen(!searchOpen)}
               title="Search menu"
               className="header-icon-btn"
-              aria-label="Search menu"
+              aria-label={searchOpen ? "Close menu search" : "Search restaurant menu"}
+              aria-expanded={searchOpen}
             >
               <Search size={18} />
             </button>
@@ -238,7 +261,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               onClick={openCart}
               title="View food order cart"
               className="header-icon-btn"
-              aria-label="View food cart"
+              aria-label={`View food order cart, ${totalItems} item${totalItems === 1 ? '' : 's'}`}
               style={{ position: 'relative' }}
             >
               <ShoppingCart size={19} />
@@ -255,6 +278,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               onClick={onOpenReservation}
               className="btn-capella-gold"
               id="header-book-btn"
+              aria-label="Book a table at TongThai Restaurant"
             >
               <Calendar size={14} />
               Book a Table
@@ -264,6 +288,8 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
               className={`mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
             >
               {mobileMenuOpen ? <X size={22} /> : <MenuIcon size={22} />}
@@ -283,10 +309,14 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             }}
           >
             <div className="container">
-              <form onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Search size={20} color="var(--color-gold)" />
+              <form role="search" onSubmit={handleSearchSubmit} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Search size={20} color="var(--color-gold)" aria-hidden="true" />
+                <label htmlFor="header-search-input" className="sr-only">
+                  Search menu items
+                </label>
                 <input
-                  type="text"
+                  id="header-search-input"
+                  type="search"
                   placeholder="Search our culinary dishes, wine or ingredients..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -305,6 +335,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
                   type="submit"
                   className="btn-capella-gold"
                   style={{ padding: '8px 20px', fontSize: '0.75rem' }}
+                  aria-label="Submit search"
                 >
                   Search
                 </button>
@@ -312,6 +343,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
                   type="button"
                   onClick={() => setSearchOpen(false)}
                   style={{ color: '#888', padding: '6px' }}
+                  aria-label="Close search input"
                 >
                   <X size={18} />
                 </button>
@@ -321,9 +353,28 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
         )}
       </header>
 
-      {/* Mobile Slide-Out Drawer */}
+      {/* Mobile Slide-Out Drawer with Backdrop */}
       {mobileMenuOpen && (
-        <div className="mobile-menu-drawer">
+        <>
+          <div
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              backdropFilter: 'blur(4px)',
+              zIndex: 199,
+            }}
+          />
+          <div
+            id="mobile-nav-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Menu"
+            className="mobile-menu-drawer"
+            style={{ zIndex: 200 }}
+          >
           <a
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -414,6 +465,7 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             📞 01274 499088 • 198–200 Keighley Rd
           </a>
         </div>
+        </>
       )}
 
       <style jsx global>{`

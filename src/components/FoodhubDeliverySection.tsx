@@ -128,9 +128,10 @@ export default function FoodhubDeliverySection() {
               href={foodhubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Order TongThai food delivery online via Foodhub (opens in new tab)"
               className="foodhub-card-btn"
             >
-              Order Delivery <ExternalLink size={14} />
+              Order Delivery <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
 
@@ -138,7 +139,7 @@ export default function FoodhubDeliverySection() {
           <div className="foodhub-card featured">
             <div className="featured-ribbon">POPULAR</div>
             <div className="foodhub-card-icon" style={{ backgroundColor: 'rgba(197, 157, 40, 0.18)', color: 'var(--color-gold)', borderColor: 'rgba(197, 157, 40, 0.4)' }}>
-              <ShoppingBag size={28} />
+              <ShoppingBag size={28} aria-hidden="true" />
             </div>
             <span className="foodhub-badge" style={{ backgroundColor: 'rgba(197, 157, 40, 0.2)', color: 'var(--color-gold)' }}>Ready in 20 Mins</span>
             <h3 className="foodhub-card-title">Click &amp; Collect</h3>
@@ -154,16 +155,17 @@ export default function FoodhubDeliverySection() {
               href={foodhubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Order takeaway collection online via Foodhub (opens in new tab)"
               className="foodhub-card-btn featured-btn"
             >
-              Order Collection <ExternalLink size={14} />
+              Order Collection <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
 
           {/* Card 3: Foodhub Table Booking */}
           <div className="foodhub-card">
             <div className="foodhub-card-icon" style={{ backgroundColor: 'rgba(46, 125, 50, 0.15)', color: '#4caf50', borderColor: 'rgba(46, 125, 50, 0.3)' }}>
-              <Calendar size={28} />
+              <Calendar size={28} aria-hidden="true" />
             </div>
             <span className="foodhub-badge" style={{ backgroundColor: 'rgba(76, 175, 80, 0.15)', color: '#81c784' }}>Instant Confirmation</span>
             <h3 className="foodhub-card-title">Table Booking</h3>
@@ -179,9 +181,10 @@ export default function FoodhubDeliverySection() {
               href={foodhubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Book a table via Foodhub (opens in new tab)"
               className="foodhub-card-btn"
             >
-              Book via Foodhub <ExternalLink size={14} />
+              Book via Foodhub <ExternalLink size={14} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -222,6 +225,7 @@ export default function FoodhubDeliverySection() {
               href={foodhubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Open TongThai Foodhub online ordering portal (opens in new tab)"
               className="btn-capella-gold"
               style={{
                 display: 'inline-flex',
@@ -235,10 +239,11 @@ export default function FoodhubDeliverySection() {
                 boxShadow: '0 4px 16px rgba(197, 157, 40, 0.35)',
               }}
             >
-              Go to Foodhub Portal <ExternalLink size={15} />
+              Go to Foodhub Portal <ExternalLink size={15} aria-hidden="true" />
             </a>
             <a
               href="tel:01274499088"
+              aria-label="Call TongThai Bradford restaurant at 01274 499088"
               className="btn-capella-outline"
               style={{
                 display: 'inline-flex',
@@ -249,7 +254,7 @@ export default function FoodhubDeliverySection() {
                 letterSpacing: '1px',
               }}
             >
-              <Phone size={15} /> Call 01274 499088
+              <Phone size={15} aria-hidden="true" /> Call 01274 499088
             </a>
           </div>
         </div>

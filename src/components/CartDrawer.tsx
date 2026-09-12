@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useCart } from '../context/CartContext';
 import { X, Plus, Minus, Trash2, ShoppingBag, CheckCircle, ArrowRight } from 'lucide-react';
@@ -9,6 +9,17 @@ export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeFromCart, clearCart, subtotal } = useCart();
   const [checkoutComplete, setCheckoutComplete] = useState(false);
   const [orderType, setOrderType] = useState<'dine-in' | 'takeaway'>('dine-in');
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeCart();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, closeCart]);
 
   if (!isOpen) return null;
 
@@ -49,6 +60,9 @@ export default function CartDrawer() {
 
       {/* Slide-over panel */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Your Dining Order Cart"
         style={{
           position: 'relative',
           width: '100%',
@@ -73,8 +87,8 @@ export default function CartDrawer() {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <ShoppingBag size={20} color="var(--color-gold)" />
-            <h3
+            <ShoppingBag size={20} color="var(--color-gold)" aria-hidden="true" />
+            <h2
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: '1rem',
@@ -86,15 +100,16 @@ export default function CartDrawer() {
               }}
             >
               Your Dining Order
-            </h3>
+            </h2>
           </div>
           <button
             onClick={closeCart}
-            style={{ color: '#aaa', padding: '6px', transition: 'color 0.2s' }}
+            aria-label="Close cart"
+            style={{ color: '#aaa', padding: '6px', transition: 'color 0.2s', background: 'transparent', border: 'none', cursor: 'pointer' }}
             onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
             onMouseLeave={(e) => (e.currentTarget.style.color = '#aaa')}
           >
-            <X size={20} />
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
 
@@ -225,7 +240,12 @@ export default function CartDrawer() {
                         flexShrink: 0,
                       }}
                     >
-                      <Image src={dish.image} alt={dish.title} fill style={{ objectFit: 'cover' }} />
+                      <Image
+                        src={dish.image}
+                        alt={`${dish.title} - TongThai Bradford`}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
                     </div>
                   ) : (
                     <div
@@ -240,6 +260,7 @@ export default function CartDrawer() {
                         flexShrink: 0,
                         color: 'var(--color-gold)',
                       }}
+                      aria-hidden="true"
                     >
                       <ShoppingBag size={22} />
                     </div>
@@ -247,7 +268,7 @@ export default function CartDrawer() {
 
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <h5
+                      <h3
                         style={{
                           fontFamily: 'var(--font-heading)',
                           fontSize: '0.875rem',
@@ -257,7 +278,7 @@ export default function CartDrawer() {
                         }}
                       >
                         {dish.title}
-                      </h5>
+                      </h3>
                       <span
                         style={{
                           fontFamily: 'var(--font-heading)',
@@ -286,27 +307,33 @@ export default function CartDrawer() {
                       >
                         <button
                           onClick={() => updateQuantity(dish.id, quantity - 1)}
-                          style={{ color: '#bbb', padding: '4px 8px', display: 'flex', alignItems: 'center' }}
+                          aria-label={`Decrease quantity of ${dish.title}`}
+                          style={{ color: '#bbb', padding: '4px 8px', display: 'flex', alignItems: 'center', background: 'transparent', border: 'none', cursor: 'pointer' }}
                         >
-                          <Minus size={13} />
+                          <Minus size={13} aria-hidden="true" />
                         </button>
-                        <span style={{ fontSize: '0.8125rem', padding: '0 8px', minWidth: '24px', textAlign: 'center' }}>
+                        <span
+                          aria-label={`Current quantity: ${quantity}`}
+                          style={{ fontSize: '0.8125rem', padding: '0 8px', minWidth: '24px', textAlign: 'center' }}
+                        >
                           {quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(dish.id, quantity + 1)}
-                          style={{ color: '#bbb', padding: '4px 8px', display: 'flex', alignItems: 'center' }}
+                          aria-label={`Increase quantity of ${dish.title}`}
+                          style={{ color: '#bbb', padding: '4px 8px', display: 'flex', alignItems: 'center', background: 'transparent', border: 'none', cursor: 'pointer' }}
                         >
-                          <Plus size={13} />
+                          <Plus size={13} aria-hidden="true" />
                         </button>
                       </div>
 
                       <button
                         onClick={() => removeFromCart(dish.id)}
-                        style={{ color: '#ff6b6b', padding: '4px' }}
+                        aria-label={`Remove ${dish.title} from order`}
+                        style={{ color: '#ff6b6b', padding: '4px', background: 'transparent', border: 'none', cursor: 'pointer' }}
                         title="Remove dish"
                       >
-                        <Trash2 size={15} />
+                        <Trash2 size={15} aria-hidden="true" />
                       </button>
                     </div>
                   </div>

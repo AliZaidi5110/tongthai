@@ -47,7 +47,7 @@ export default function ChefRecommended({ onOpenLightbox }: ChefRecommendedProps
                 {dish.image && (
                   <Image
                     src={dish.image}
-                    alt={dish.title}
+                    alt={`${dish.title}${dish.thaiName ? ` (${dish.thaiName})` : ''} - Signature Royal Thai dish at TongThai Restaurant Bradford`}
                     width={490}
                     height={314}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
@@ -91,7 +91,8 @@ export default function ChefRecommended({ onOpenLightbox }: ChefRecommendedProps
                         boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                         transition: 'transform 0.2s',
                       }}
-                      title="View full image"
+                      title={`View full photo of ${dish.title}`}
+                      aria-label={`View full photo of ${dish.title}`}
                       className="hover-action-btn"
                     >
                       <Eye size={20} />
@@ -112,7 +113,8 @@ export default function ChefRecommended({ onOpenLightbox }: ChefRecommendedProps
                       boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                       transition: 'transform 0.2s',
                     }}
-                    title="Add to order"
+                    title={`Add ${dish.title} to order`}
+                    aria-label={`Add ${dish.title} to order`}
                     className="hover-action-btn"
                   >
                     <Plus size={22} />
@@ -212,6 +214,7 @@ export default function ChefRecommended({ onOpenLightbox }: ChefRecommendedProps
 
                 <button
                   onClick={() => addToCart(dish)}
+                  aria-label={`Order ${dish.title}`}
                   style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '0.6875rem',

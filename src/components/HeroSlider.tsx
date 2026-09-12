@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 interface Slide {
   id: number;
   bgImage: string;
+  imageAlt: string;
   scriptTitle: string;
   subHeader?: string;
   description: string;
@@ -20,8 +21,9 @@ const SLIDES: Slide[] = [
   {
     id: 1,
     bgImage: '/images/photodune-5087439-chicken-tagine-m.jpg',
+    imageAlt: 'Authentic Thai green curry and wok specialities at TongThai Restaurant Bradford',
     scriptTitle: 'Authentic Thai',
-    subHeader: 'ROYAL HERITAGE RECIPES & WOK MASTERY',
+    subHeader: 'ROYAL HERITAGE RECIPES & WOK MASTERY • 100% HALAL',
     description: 'Welcome to TongThai Restaurant in Bradford. Indulge in authentic Green Curries, sizzling Pad Thai, and vibrant Thai herbs.',
     primaryCtaText: 'View Our Menu',
     primaryCtaLink: '#popular-menu',
@@ -31,6 +33,7 @@ const SLIDES: Slide[] = [
   {
     id: 2,
     bgImage: '/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg',
+    imageAlt: 'Signature sizzling Volcano Duck Thai speciality on hot plate at TongThai Bradford',
     scriptTitle: 'Volcano Duck',
     subHeader: 'HOUSE CHEF SPECIALITY ON SIZZLING PLATTER',
     description: 'Crispy roasted duck breast smothered in our signature tamarind chilli reduction with golden shallots and wok vegetables.',
@@ -42,6 +45,7 @@ const SLIDES: Slide[] = [
   {
     id: 3,
     bgImage: '/images/restaurant-front.jpg',
+    imageAlt: 'TongThai Restaurant exterior and entrance at 198-200 Keighley Road, Bradford BD9',
     scriptTitle: 'Royal Hospitality',
     subHeader: '198–200 KEIGHLEY ROAD, BRADFORD • 100% HALAL',
     description: 'A welcoming family-run haven serving handcrafted curries, steamed sea bass, and authentic Thai drinks from Wednesday to Sunday.',
@@ -77,6 +81,8 @@ export default function HeroSlider() {
       className="hero-slider-section"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Restaurant highlights"
     >
       {/* Slides */}
       {SLIDES.map((slide, idx) => {
@@ -84,6 +90,7 @@ export default function HeroSlider() {
         return (
           <div
             key={slide.id}
+            aria-hidden={!isActive}
             style={{
               position: 'absolute',
               inset: 0,
@@ -99,7 +106,7 @@ export default function HeroSlider() {
             {/* Optimized Responsive Next.js Hero Image */}
             <Image
               src={slide.bgImage}
-              alt={slide.scriptTitle}
+              alt={slide.imageAlt}
               fill
               priority={idx === 0}
               sizes="(max-width: 768px) 100vw, 1920px"
@@ -127,23 +134,43 @@ export default function HeroSlider() {
                 paddingRight: '20px',
               }}
             >
-              {/* Script Title */}
-              <h1
-                style={{
-                  fontFamily: 'var(--font-script)',
-                  fontSize: 'clamp(2.5rem, 7vw, 7.5rem)',
-                  fontWeight: 400,
-                  lineHeight: 1.05,
-                  color: '#ffffff',
-                  textShadow: '0 4px 20px rgba(0,0,0,0.7)',
-                  marginBottom: '10px',
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'translateY(0)' : 'translateY(-20px)',
-                  transition: 'all 0.8s ease 0.2s',
-                }}
-              >
-                {slide.scriptTitle}
-              </h1>
+              {/* Semantic Single H1 for Slide 0, H2 for Other Slides */}
+              {idx === 0 ? (
+                <h1
+                  style={{
+                    fontFamily: 'var(--font-script)',
+                    fontSize: 'clamp(2.5rem, 7vw, 7.5rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.05,
+                    color: '#ffffff',
+                    textShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                    marginBottom: '10px',
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'translateY(0)' : 'translateY(-20px)',
+                    transition: 'all 0.8s ease 0.2s',
+                  }}
+                >
+                  <span className="sr-only">TongThai Restaurant Bradford — </span>
+                  {slide.scriptTitle}
+                </h1>
+              ) : (
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-script)',
+                    fontSize: 'clamp(2.5rem, 7vw, 7.5rem)',
+                    fontWeight: 400,
+                    lineHeight: 1.05,
+                    color: '#ffffff',
+                    textShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                    marginBottom: '10px',
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'translateY(0)' : 'translateY(-20px)',
+                    transition: 'all 0.8s ease 0.2s',
+                  }}
+                >
+                  {slide.scriptTitle}
+                </h2>
+              )}
 
               {/* Uppercase Subtitle */}
               {slide.subHeader && (
@@ -303,7 +330,8 @@ export default function HeroSlider() {
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Switch to slide ${i + 1}: ${SLIDES[i].scriptTitle}`}
+            aria-current={i === currentSlide ? 'true' : undefined}
             style={{
               width: i === currentSlide ? '32px' : '10px',
               height: '10px',

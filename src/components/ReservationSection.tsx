@@ -198,6 +198,7 @@ export default function ReservationSection() {
                 {/* Date */}
                 <div>
                   <label
+                    htmlFor="booking-date"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -207,16 +208,18 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
-                    <CalendarIcon size={14} color="var(--color-gold)" /> Date
+                    <CalendarIcon size={14} color="var(--color-gold)" aria-hidden="true" /> Date *
                   </label>
                   <input
+                    id="booking-date"
                     type="date"
                     name="date"
                     required
+                    aria-required="true"
                     value={formData.date}
                     onChange={handleChange}
                     style={{
@@ -227,7 +230,6 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   />
                 </div>
@@ -235,6 +237,7 @@ export default function ReservationSection() {
                 {/* Time */}
                 <div>
                   <label
+                    htmlFor="booking-time"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -244,14 +247,17 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
-                    <Clock size={14} color="var(--color-gold)" /> Time
+                    <Clock size={14} color="var(--color-gold)" aria-hidden="true" /> Time *
                   </label>
                   <select
+                    id="booking-time"
                     name="time"
+                    required
+                    aria-required="true"
                     value={formData.time}
                     onChange={handleChange}
                     style={{
@@ -262,7 +268,6 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   >
                     <option value="15:00">03:00 PM</option>
@@ -283,6 +288,7 @@ export default function ReservationSection() {
                 {/* Number of Guests */}
                 <div>
                   <label
+                    htmlFor="booking-guests"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -292,14 +298,17 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
-                    <Users size={14} color="var(--color-gold)" /> Party Size
+                    <Users size={14} color="var(--color-gold)" aria-hidden="true" /> Party Size *
                   </label>
                   <select
+                    id="booking-guests"
                     name="guests"
+                    required
+                    aria-required="true"
                     value={formData.guests}
                     onChange={handleChange}
                     style={{
@@ -310,7 +319,6 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   >
                     <option value="1">1 Person</option>
@@ -327,6 +335,7 @@ export default function ReservationSection() {
                 {/* Seating Preference */}
                 <div>
                   <label
+                    htmlFor="booking-seating"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -336,13 +345,14 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
-                    <Utensils size={14} color="var(--color-gold)" /> Preferred Seating
+                    <Utensils size={14} color="var(--color-gold)" aria-hidden="true" /> Preferred Seating
                   </label>
                   <select
+                    id="booking-seating"
                     name="seating"
                     value={formData.seating}
                     onChange={handleChange}
@@ -354,7 +364,6 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   >
                     <option value="Main Dining Hall">Main Dining Hall (Atmospheric)</option>
@@ -376,6 +385,7 @@ export default function ReservationSection() {
               >
                 <div>
                   <label
+                    htmlFor="booking-name"
                     style={{
                       display: 'block',
                       fontFamily: 'var(--font-heading)',
@@ -383,16 +393,18 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
                     Full Name *
                   </label>
                   <input
+                    id="booking-name"
                     type="text"
                     name="name"
                     required
+                    aria-required="true"
                     placeholder="e.g. Lady Victoria Spencer"
                     value={formData.name}
                     onChange={handleChange}
@@ -404,13 +416,13 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   />
                 </div>
 
                 <div>
                   <label
+                    htmlFor="booking-email"
                     style={{
                       display: 'block',
                       fontFamily: 'var(--font-heading)',
@@ -418,16 +430,18 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
                     Email Address *
                   </label>
                   <input
+                    id="booking-email"
                     type="email"
                     name="email"
                     required
+                    aria-required="true"
                     placeholder="name@domain.com"
                     value={formData.email}
                     onChange={handleChange}
@@ -439,13 +453,13 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   />
                 </div>
 
                 <div>
                   <label
+                    htmlFor="booking-phone"
                     style={{
                       display: 'block',
                       fontFamily: 'var(--font-heading)',
@@ -453,17 +467,19 @@ export default function ReservationSection() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
-                      color: '#444',
+                      color: '#333',
                       marginBottom: '8px',
                     }}
                   >
                     Phone Number *
                   </label>
                   <input
+                    id="booking-phone"
                     type="tel"
                     name="phone"
                     required
-                    placeholder="+44 20 7946 0991"
+                    aria-required="true"
+                    placeholder="+44 1274 499088"
                     value={formData.phone}
                     onChange={handleChange}
                     style={{
@@ -474,7 +490,6 @@ export default function ReservationSection() {
                       borderRadius: '2px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.9375rem',
-                      outline: 'none',
                     }}
                   />
                 </div>
@@ -483,6 +498,7 @@ export default function ReservationSection() {
               {/* Special Requests */}
               <div style={{ marginBottom: '32px' }}>
                 <label
+                  htmlFor="booking-notes"
                   style={{
                     display: 'block',
                     fontFamily: 'var(--font-heading)',
@@ -490,13 +506,14 @@ export default function ReservationSection() {
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '1px',
-                    color: '#444',
+                    color: '#333',
                     marginBottom: '8px',
                   }}
                 >
                   Special Requests / Dietary Needs / Occasion
                 </label>
                 <textarea
+                  id="booking-notes"
                   name="notes"
                   rows={3}
                   placeholder="Tell us if you are celebrating an anniversary, require allergen adjustments, or have wine pairing preferences..."
@@ -510,14 +527,18 @@ export default function ReservationSection() {
                     borderRadius: '2px',
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.9375rem',
-                    outline: 'none',
                     resize: 'vertical',
                   }}
                 />
               </div>
 
               <div style={{ textAlign: 'center' }}>
-                <button type="submit" className="btn-capella-gold" style={{ padding: '16px 44px' }}>
+                <button
+                  type="submit"
+                  className="btn-capella-gold"
+                  style={{ padding: '16px 44px' }}
+                  aria-label="Confirm Table Reservation at TongThai"
+                >
                   Confirm Table Reservation
                 </button>
               </div>

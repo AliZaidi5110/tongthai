@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
@@ -12,10 +12,24 @@ interface LightboxModalProps {
 }
 
 export default function LightboxModal({ isOpen, imageSrc, caption, onClose }: LightboxModalProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={caption || 'Enlarged photo preview'}
       style={{
         position: 'fixed',
         inset: 0,
@@ -32,12 +46,13 @@ export default function LightboxModal({ isOpen, imageSrc, caption, onClose }: Li
     >
       <button
         onClick={onClose}
+        aria-label="Close enlarged photo view"
         style={{
           position: 'absolute',
           top: '24px',
           right: '24px',
           color: '#ffffff',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
           borderRadius: '50%',
           width: '44px',
           height: '44px',
@@ -48,7 +63,7 @@ export default function LightboxModal({ isOpen, imageSrc, caption, onClose }: Li
           zIndex: 10,
         }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--color-gold)')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)')}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)')}
       >
         <X size={24} />
       </button>
@@ -77,7 +92,7 @@ export default function LightboxModal({ isOpen, imageSrc, caption, onClose }: Li
         >
           <Image
             src={imageSrc}
-            alt={caption}
+            alt={caption || 'TongThai Restaurant Bradford photo'}
             fill
             sizes="90vw"
             style={{ objectFit: 'contain' }}

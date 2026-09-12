@@ -28,7 +28,7 @@ export default function AboutSection() {
             >
               <Image
                 src="/images/restaurant-front.jpg"
-                alt="TongThai Restaurant - 198-200 Keighley Road, Bradford"
+                alt="TongThai Restaurant exterior and entrance at 198-200 Keighley Road, Bradford BD9"
                 width={640}
                 height={460}
                 sizes="(max-width: 768px) 100vw, 640px"
@@ -61,7 +61,7 @@ export default function AboutSection() {
                   gap: '8px',
                 }}
               >
-                <div>
+                <address style={{ fontStyle: 'normal' }}>
                   <div
                     style={{
                       fontFamily: 'var(--font-heading)',
@@ -75,9 +75,9 @@ export default function AboutSection() {
                     198–200 Keighley Road
                   </div>
                   <div style={{ fontSize: '0.6875rem', color: 'var(--color-gold)' }}>
-                    Bradford, BD9 4JZ • 01274 499088
+                    Bradford, BD9 4JZ • <a href="tel:01274499088" style={{ color: 'inherit', textDecoration: 'underline' }}>01274 499088</a>
                   </div>
-                </div>
+                </address>
                 <span
                   style={{
                     fontSize: '0.6875rem',
@@ -200,7 +200,7 @@ export default function AboutSection() {
               <div>
                 <Image
                   src="/images/signature2.png"
-                  alt="Chef Somchai Prasert Signature"
+                  alt="Signature of Head Chef Somchai Prasert, TongThai Restaurant Bradford"
                   width={180}
                   height={50}
                   style={{ objectFit: 'contain' }}

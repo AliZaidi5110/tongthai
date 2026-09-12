@@ -396,25 +396,25 @@ export const GALLERY_IMAGES = [
   {
     src: '/images/restaurant-front.jpg',
     full: '/images/restaurant-front.jpg',
-    alt: 'TongThai Restaurant Storefront, 198–200 Keighley Road, Bradford',
+    alt: 'TongThai Restaurant Storefront, 198–200 Keighley Road, Bradford BD9 4JZ',
     caption: 'TongThai Restaurant Front — 198–200 Keighley Road, Bradford BD9'
   },
   {
     src: '/images/9569414693_33895ce768_o-685x1024-220x220.jpg',
     full: '/images/9569414693_33895ce768_o-685x1024-220x220.jpg',
-    alt: 'Thai drinks and specialities',
+    alt: 'Authentic Thai herbal drinks and traditional refreshments at TongThai Bradford',
     caption: 'Authentic Thai Specialities & Herbal Teas'
   },
   {
     src: '/images/5403403550_7e0f08aed6_o-1024x681-220x220.jpg',
     full: '/images/5403403550_7e0f08aed6_o-1024x681-220x220.jpg',
-    alt: 'TongThai restaurant dining room ambience',
+    alt: 'TongThai elegant Thai restaurant dining room interior and table setting in Bradford',
     caption: 'Warm Thai Hospitality on Keighley Road, Bradford'
   },
   {
     src: '/images/photodune-2201397-chef-with-dish-m-1024x682-220x220.jpg',
     full: '/images/photodune-2201397-chef-with-dish-m-1024x682-220x220.jpg',
-    alt: 'Chef garnishing wok tossed Pad Thai',
+    alt: 'TongThai head chef preparing fresh wok-tossed authentic Thai Pad Thai noodles',
     caption: 'Sizzling Wok Flamed Pad Thai & Noodles'
   }
 ];

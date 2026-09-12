@@ -112,8 +112,18 @@ export default function DiningExperience({ onOpenLightbox, onOpenReservation }: 
               return (
                 <div
                   key={idx}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View full image: ${img.caption}`}
                   onClick={() => onOpenLightbox(img.full, img.caption)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onOpenLightbox(img.full, img.caption);
+                    }
+                  }}
                   className="mosaic-square-item mosaic-item"
+                  style={{ cursor: 'pointer' }}
                 >
                   <Image
                     src={img.src}
@@ -157,6 +167,7 @@ export default function DiningExperience({ onOpenLightbox, onOpenReservation }: 
                       justifyContent: 'center',
                       marginBottom: '8px',
                     }}
+                    aria-hidden="true"
                   >
                     <Expand size={20} />
                   </div>
