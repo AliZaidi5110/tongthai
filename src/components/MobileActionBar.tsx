@@ -93,7 +93,7 @@ export default function MobileActionBar() {
           </span>
         </a>
 
-        {/* Order Online */}
+        {/* Order Online via Foodhub */}
         <a
           href="https://tongthaionline.co.uk/"
           target="_blank"
@@ -107,14 +107,15 @@ export default function MobileActionBar() {
             justifyContent: 'center',
             backgroundColor: '#ff4b2b',
             color: '#ffffff',
-            gap: '4px',
+            gap: '2px',
             textDecoration: 'none',
             minHeight: '48px',
+            boxShadow: '0 -2px 10px rgba(255, 75, 43, 0.4)',
           }}
         >
-          <ShoppingBag size={18} color="#ffffff" aria-hidden="true" />
-          <span style={{ fontSize: '0.625rem', fontFamily: 'var(--font-heading)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-            Order
+          <span style={{ fontSize: '1.125rem', lineHeight: 1 }} aria-hidden="true">🛵</span>
+          <span style={{ fontSize: '0.5625rem', fontFamily: 'var(--font-heading)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#ffffff' }}>
+            Order Foodhub
           </span>
         </a>
       </div>
@@ -129,8 +130,19 @@ export default function MobileActionBar() {
           opacity: 0.8;
           background-color: rgba(255, 255, 255, 0.05);
         }
+        .mobile-action-btn.order-cta {
+          animation: pulseFoodhub 2.5s infinite;
+        }
+        @keyframes pulseFoodhub {
+          0%, 100% {
+            background-color: #ff4b2b;
+          }
+          50% {
+            background-color: #e03a1d;
+          }
+        }
         .mobile-action-btn.order-cta:active {
-          background-color: #e03a1d !important;
+          background-color: #c82d12 !important;
         }
       `}</style>
     </nav>

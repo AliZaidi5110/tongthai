@@ -71,6 +71,49 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           transition: 'all 0.3s ease',
         }}
       >
+        {/* Top Announcement Bar: Foodhub Online Ordering */}
+        <div className="top-foodhub-strip">
+          <div
+            className="container container-wide"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '6px clamp(12px, 2vw, 32px)',
+              flexWrap: 'wrap',
+              gap: '6px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span className="top-foodhub-badge">
+                FOODHUB PARTNER
+              </span>
+              <span className="top-foodhub-text">
+                🛵 Order Online for Fast Delivery &amp; Collection Across Bradford • 100% Halal
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <a
+                href="tel:01274499088"
+                className="top-phone-link"
+                aria-label="Call TongThai Bradford at 01274 499088"
+              >
+                📞 01274 499088
+              </a>
+              <a
+                href="https://tongthaionline.co.uk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="top-foodhub-cta"
+                aria-label="Order online on Foodhub with instant delivery or collection (opens in new tab)"
+              >
+                <span>🛵</span> Order on Foodhub ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="container container-wide header-nav-container">
           {/* Logo */}
           <Link href="/" className="header-logo-link" aria-label="TongThai Restaurant Bradford Home">
@@ -272,6 +315,19 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
               )}
             </button>
 
+            {/* Foodhub Online Order Header CTA Button */}
+            <a
+              href="https://tongthaionline.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-header-foodhub"
+              id="header-foodhub-btn"
+              aria-label="Order online from TongThai on Foodhub (opens in new tab)"
+            >
+              <span aria-hidden="true" style={{ fontSize: '1rem' }}>🛵</span>
+              <span>Order on Foodhub</span>
+            </a>
+
             {/* Quick Reservation CTA */}
             <a
               href="#reservation"
@@ -375,6 +431,22 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             className="mobile-menu-drawer"
             style={{ zIndex: 200 }}
           >
+          {/* Top Foodhub Order CTA inside Mobile Drawer */}
+          <a
+            href="https://tongthaionline.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mobile-drawer-foodhub-top"
+            aria-label="Order online on Foodhub for delivery or collection (opens in new tab)"
+          >
+            <span style={{ fontSize: '1.25rem' }}>🛵</span>
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontWeight: 800, fontSize: '0.8125rem', letterSpacing: '1px' }}>ORDER ON FOODHUB</div>
+              <div style={{ fontSize: '0.6875rem', opacity: 0.9 }}>Fast Delivery &amp; Collection Across Bradford</div>
+            </div>
+            <span style={{ marginLeft: 'auto', fontWeight: 800 }}>↗</span>
+          </a>
+
           <a
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -754,6 +826,120 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           align-items: center;
           justify-content: center;
           gap: 8px;
+        }
+
+        .top-foodhub-strip {
+          background: linear-gradient(90deg, #0e0e0e 0%, #1e1210 50%, #0e0e0e 100%);
+          border-bottom: 1px solid rgba(255, 75, 43, 0.35);
+          font-size: 0.75rem;
+          transition: all 0.3s ease;
+        }
+
+        .top-foodhub-badge {
+          background-color: #ff4b2b;
+          color: #ffffff;
+          font-weight: 800;
+          padding: 2px 7px;
+          border-radius: 2px;
+          font-size: 0.625rem;
+          letter-spacing: 0.8px;
+          font-family: var(--font-heading);
+          text-transform: uppercase;
+        }
+
+        .top-foodhub-text {
+          color: #e8e8e8;
+          font-size: clamp(0.6875rem, 0.8vw, 0.75rem);
+          font-weight: 500;
+        }
+
+        .top-phone-link {
+          color: #bbbbbb;
+          text-decoration: none;
+          font-size: 0.75rem;
+          font-family: var(--font-heading);
+          transition: color 0.2s;
+        }
+
+        .top-phone-link:hover {
+          color: #ffffff;
+        }
+
+        .top-foodhub-cta {
+          background-color: #ff4b2b;
+          color: #ffffff !important;
+          font-weight: 700;
+          text-transform: uppercase;
+          padding: 3px 12px;
+          border-radius: 2px;
+          font-family: var(--font-heading);
+          font-size: 0.6875rem;
+          letter-spacing: 0.8px;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 8px rgba(255, 75, 43, 0.4);
+        }
+
+        .top-foodhub-cta:hover {
+          background-color: #e03a1d;
+          transform: translateY(-1px);
+        }
+
+        .btn-header-foodhub {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background-color: #ff4b2b;
+          color: #ffffff !important;
+          padding: clamp(7px, 0.8vw, 10px) clamp(10px, 1vw, 18px);
+          font-size: clamp(0.6875rem, 0.75vw, 0.75rem);
+          font-family: var(--font-heading);
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          border-radius: 2px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 10px rgba(255, 75, 43, 0.35);
+          flex-shrink: 0 !important;
+        }
+
+        .btn-header-foodhub:hover {
+          background-color: #e03a1d;
+          box-shadow: 0 4px 14px rgba(255, 75, 43, 0.55);
+          transform: translateY(-1px);
+        }
+
+        .mobile-drawer-foodhub-top {
+          width: 100%;
+          max-width: 340px;
+          padding: 12px 16px;
+          background: linear-gradient(135deg, #ff4b2b 0%, #d83518 100%);
+          color: #ffffff !important;
+          border-radius: 4px;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          box-shadow: 0 4px 16px rgba(255, 75, 43, 0.45);
+          margin-bottom: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 680px) {
+          .top-foodhub-text {
+            display: none;
+          }
+          .btn-header-foodhub span:not([aria-hidden="true"]) {
+            display: none;
+          }
+          .btn-header-foodhub {
+            padding: 7px 10px;
+          }
         }
 
         .mobile-drawer-phone {

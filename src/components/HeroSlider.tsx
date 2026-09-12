@@ -222,12 +222,12 @@ export default function HeroSlider() {
                 {slide.description}
               </p>
 
-              {/* Action Buttons */}
+              {/* Action Buttons with Foodhub Order In Front */}
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '16px',
+                  gap: '14px',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
                   opacity: isActive ? 1 : 0,
@@ -235,14 +235,63 @@ export default function HeroSlider() {
                   transition: 'all 0.8s ease 0.65s',
                 }}
               >
-                <a href={slide.primaryCtaLink} className="btn-capella-gold" style={{ padding: '15px 36px' }}>
+                {/* Primary Foodhub Ordering CTA */}
+                <a
+                  href="https://tongthaionline.co.uk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-hero-foodhub"
+                  aria-label="Order online on Foodhub for direct delivery or collection (opens in new tab)"
+                >
+                  <span aria-hidden="true" style={{ fontSize: '1.25rem' }}>🛵</span>
+                  <span>Order on Foodhub</span>
+                </a>
+
+                <a href={slide.primaryCtaLink} className="btn-capella-gold" style={{ padding: '15px 32px' }}>
                   {slide.primaryCtaText}
                 </a>
                 {slide.secondaryCtaText && (
-                  <a href={slide.secondaryCtaLink} className="btn-capella-outline" style={{ padding: '15px 36px' }}>
+                  <a href={slide.secondaryCtaLink} className="btn-capella-outline" style={{ padding: '15px 32px' }}>
                     {slide.secondaryCtaText}
                   </a>
                 )}
+              </div>
+
+              {/* Foodhub Live Status Sub-badge */}
+              <div
+                style={{
+                  marginTop: '18px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: 'rgba(15, 15, 15, 0.75)',
+                  border: '1px solid rgba(255, 75, 43, 0.45)',
+                  padding: '6px 16px',
+                  borderRadius: '20px',
+                  fontSize: '0.75rem',
+                  fontFamily: 'var(--font-heading)',
+                  letterSpacing: '0.8px',
+                  textTransform: 'uppercase',
+                  color: '#ffffff',
+                  backdropFilter: 'blur(4px)',
+                  opacity: isActive ? 1 : 0,
+                  transition: 'all 0.8s ease 0.75s',
+                }}
+              >
+                <span
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: '#22c55e',
+                    display: 'inline-block',
+                    boxShadow: '0 0 8px #22c55e',
+                  }}
+                  aria-hidden="true"
+                />
+                <span style={{ color: '#ff4b2b', fontWeight: 800 }}>LIVE ORDERING</span>
+                <span style={{ color: '#888' }}>•</span>
+                <span style={{ color: '#e5e5e5' }}>Fast Delivery &amp; Collection Across Bradford</span>
               </div>
             </div>
           </div>
@@ -374,6 +423,46 @@ export default function HeroSlider() {
           }
           to {
             transform: scaleX(1);
+          }
+        }
+
+        .btn-hero-foodhub {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #ff4b2b 0%, #e03a1d 100%);
+          color: #ffffff !important;
+          padding: 15px 34px;
+          font-family: var(--font-heading);
+          font-size: 0.8125rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          border-radius: 2px;
+          text-decoration: none;
+          box-shadow: 0 6px 24px rgba(255, 75, 43, 0.45);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .btn-hero-foodhub:hover {
+          background: linear-gradient(135deg, #ff5733 0%, #c82d12 100%);
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 10px 30px rgba(255, 75, 43, 0.6);
+          border-color: #ffffff;
+        }
+
+        .btn-hero-foodhub:active {
+          transform: translateY(0) scale(0.98);
+        }
+
+        @media (max-width: 640px) {
+          .btn-hero-foodhub {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 24px;
           }
         }
       `}</style>
