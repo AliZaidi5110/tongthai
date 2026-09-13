@@ -64,7 +64,7 @@ export default function HomePage() {
 
       {/* Parallax Breakout 1: Chef Recommended */}
       <ParallaxBanner
-        image="/images/shutterstock_178075700.jpg"
+        image="/images/pad-thai-goong.jpg"
         title="Chef Recommended"
         subtitle="Signature Royal Thai dishes recommended by our master chefs"
         objectPosition="center 45%"
@@ -75,7 +75,7 @@ export default function HomePage() {
 
       {/* Parallax Breakout 2: Popular Dishes */}
       <ParallaxBanner
-        image="/images/photodune-5087439-chicken-tagine-m.jpg"
+        image="/images/volcano-duck.jpg"
         title="Popular Thai Dishes"
         subtitle="Our most beloved curries, noodles, stir-fries & drinks"
         objectPosition="center 38%"
@@ -89,7 +89,7 @@ export default function HomePage() {
 
       {/* Parallax Breakout 3: Ingredients */}
       <ParallaxBanner
-        image="/images/shutterstock_174816359.jpg"
+        image="/images/dining-room-2.jpg"
         title="Fresh Thai Herbs"
         subtitle="Hand-pounded galangal, lemongrass, sweet basil & kaffir lime"
         objectPosition="center 50%"

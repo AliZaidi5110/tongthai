@@ -12,7 +12,7 @@ export default function ChefTeam() {
       className="chef-team-section"
     >
       <Image
-        src="/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg"
+        src="/images/dining-room-1.jpg"
         alt=""
         aria-hidden="true"
         fill

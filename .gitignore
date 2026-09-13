@@ -37,3 +37,8 @@ Capella _ Restaurant WordPress Preview - ThemeForest.html
 
 .vercel
 .env*.local
+
+# scratch and raw media archives
+*.zip
+public/whatsapp_extracted/
+*.ps1

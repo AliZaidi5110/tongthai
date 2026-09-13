@@ -35,8 +35,8 @@ export default function Footer() {
               }}
             >
               <Image
-                src="/images/photodune-5087439-chicken-tagine-m.jpg"
-                alt="TongThai Authentic Slow-Simmered Thai Cuisine"
+                src="/images/volcano-duck.jpg"
+                alt="TongThai Signature Sizzling Volcano Duck"
                 fill
                 sizes="(max-width: 768px) 100vw, 280px"
                 style={{ objectFit: 'cover' }}

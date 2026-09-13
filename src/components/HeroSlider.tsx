@@ -20,8 +20,8 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    bgImage: '/images/photodune-5087439-chicken-tagine-m.jpg',
-    imageAlt: 'Authentic Thai green curry and wok specialities at TongThai Restaurant Bradford',
+    bgImage: '/images/volcano-duck.jpg',
+    imageAlt: 'Signature sizzling Volcano Duck Thai speciality on flaming hot plate at TongThai Bradford',
     scriptTitle: 'Authentic Thai',
     subHeader: 'ROYAL HERITAGE RECIPES & WOK MASTERY • 100% HALAL',
     description: 'Welcome to TongThai Restaurant in Bradford. Indulge in authentic Green Curries, sizzling Pad Thai, and vibrant Thai herbs.',
@@ -32,8 +32,8 @@ const SLIDES: Slide[] = [
   },
   {
     id: 2,
-    bgImage: '/images/photodune-3771884-wine-glasses-and-cutlery-in-restaurant-m_copy.jpg',
-    imageAlt: 'Signature sizzling Volcano Duck Thai speciality on hot plate at TongThai Bradford',
+    bgImage: '/images/dining-room-1.jpg',
+    imageAlt: 'Warm dining room ambiance and authentic hospitality at TongThai Bradford',
     scriptTitle: 'Volcano Duck',
     subHeader: 'HOUSE CHEF SPECIALITY ON SIZZLING PLATTER',
     description: 'Crispy roasted duck breast smothered in our signature tamarind chilli reduction with golden shallots and wok vegetables.',

@@ -99,7 +99,7 @@ export const CHEF_RECOMMENDED_DISHES: Dish[] = [
     ingredients: 'Roasted Duck Breast / Sizzling Thai Spices / Sweet Tamarind Chilli Glaze',
     category: 'specials',
     badge: 'Chef Choice',
-    image: '/images/photodune-5087439-chicken-tagine-m.jpg',
+    image: '/images/volcano-duck.jpg',
     description: 'Signature crispy roasted duck breast served on a sizzling hot plate, smothered in our secret sweet and sour chilli tamarind reduction with crispy shallots and wok vegetables.'
   },
   {
@@ -110,7 +110,7 @@ export const CHEF_RECOMMENDED_DISHES: Dish[] = [
     ingredients: 'Fresh Sea Bass Fillet / Fresh Lime / Crushed Garlic / Birds Eye Chilli',
     category: 'specials',
     badge: 'Recommended',
-    image: '/images/shutterstock_179643251-490x314.jpg',
+    image: '/images/steamed-sea-bass.jpg',
     description: 'Succulent fresh sea bass fillet gently steamed with hand-squeezed Thai lime juice, crushed garlic cloves, fresh coriander, and fiery birds eye chillies.'
   },
   {
@@ -121,7 +121,7 @@ export const CHEF_RECOMMENDED_DISHES: Dish[] = [
     ingredients: 'Marinated Chicken Skewers / Lemongrass / Warm Peanut Sauce / Cucumber Relish',
     category: 'starters',
     badge: 'Popular',
-    image: '/images/5732555949_4ec706dd58_o-490x314.jpg',
+    image: '/images/chicken-satay.jpg',
     description: 'Tender chicken skewers marinated in rich coconut cream, turmeric, and lemongrass, grilled to perfection and served with our famous house-made peanut satay sauce.'
   },
   {
@@ -132,7 +132,7 @@ export const CHEF_RECOMMENDED_DISHES: Dish[] = [
     ingredients: 'Chicken / Coconut Milk / Thai Pea Aubergines / Bamboo / Sweet Basil',
     category: 'mains',
     badge: 'Recommended',
-    image: '/images/3825404172_7eceffa9c1_o-490x314.jpg',
+    image: '/images/thai-green-curry.jpg',
     description: 'The national pride of Thailand. Fragrant green curry simmered with rich coconut milk, Thai pea aubergines, crisp bamboo shoots, and fresh sweet Thai basil leaves.'
   },
   {
@@ -143,19 +143,19 @@ export const CHEF_RECOMMENDED_DISHES: Dish[] = [
     ingredients: 'Jumbo King Prawns / Rice Ribbon Noodles / Tamarind / Crushed Peanuts',
     category: 'noodles',
     badge: 'Popular',
-    image: '/images/5638487457_ce6335f841_o-490x314.jpg',
+    image: '/images/pad-thai-goong.jpg',
     description: 'Classic wok-tossed rice noodles with succulent king prawns, sweet and sour palm sugar tamarind glaze, egg, spring onions, fresh bean sprouts, and roasted crushed peanuts.'
   },
   {
     id: 'rec-6',
-    title: 'Slow-Cooked Massaman Curry',
-    thaiName: 'Massaman Gai / Neua',
+    title: 'Fragrant Thai Red Curry / Massaman',
+    thaiName: 'Gaeng Dang / Massaman',
     price: 13.50,
-    ingredients: 'Tender Beef or Chicken / Cinnamon / Baby Potatoes / Roasted Peanuts',
+    ingredients: 'Tender Chicken or Beef / Coconut Milk / Kaffir Leaves / Bamboo / Thai Basil',
     category: 'mains',
     badge: 'Chef Choice',
-    image: '/images/Loaded-Baked-Potato-Pizza-Recipe-490x314.jpg',
-    description: 'Rich, mildly spiced southern Thai curry slowly braised with whole star anise, cinnamon quills, baby potatoes, sweet shallots, and roasted cashew nuts.'
+    image: '/images/thai-red-curry.jpg',
+    description: 'Rich, aromatic Thai curry simmered with thick coconut cream, hand-pounded red spices, kaffir lime leaves, and fresh sweet basil.'
   }
 ];
 
@@ -359,10 +359,10 @@ export const POPULAR_DISHES: Dish[] = [
 export const CHEFS: Chef[] = [
   {
     id: 'chef-1',
-    name: 'Chef Somchai Prasert',
-    role: 'Executive Head Chef & Founder',
-    image: '/images/chief-456x456.jpg',
-    bio: 'Born in Chiang Mai with over 20 years of authentic heritage cooking, Chef Somchai brings traditional wok techniques, hand-pounded curry pastes, and royal Thai recipes to Bradford.',
+    name: 'Head Chef & Kitchen Team',
+    role: 'Head Chef & Culinary Director',
+    image: '/images/chef-head.jpg',
+    bio: 'With over 20 years of authentic heritage Thai cooking, our Head Chef brings traditional wok techniques, hand-pounded curry pastes, and royal Thai recipes directly to Keighley Road, Bradford.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
       instagram: 'https://www.instagram.com/tongthaibradford'
@@ -370,10 +370,10 @@ export const CHEFS: Chef[] = [
   },
   {
     id: 'chef-2',
-    name: 'Chef Malee Vongsuvan',
-    role: 'Curry & Spice Master',
-    image: '/images/Depositphotos_3233253_original-400x400.jpg',
-    bio: 'Renowned for crafting our signature green, red, and massaman curry pastes from raw galangal, lemongrass, fingerroot, and kaffir leaves ground fresh daily.',
+    name: 'TongThai Hospitality & Service Team',
+    role: 'Restaurant Management & Curry Specialists',
+    image: '/images/chef-team-karaoke.jpg',
+    bio: 'Dedicated to warm Thai hospitality and authentic culinary tradition. Our team ensures every curry, wok dish, and dining experience reflects the genuine spirit of Thailand.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
       instagram: 'https://www.instagram.com/tongthaibradford'
@@ -381,10 +381,10 @@ export const CHEFS: Chef[] = [
   },
   {
     id: 'chef-3',
-    name: 'Chef Anan Siriporn',
-    role: 'Seafood & Wok Specialist',
-    image: '/images/shutterstock_116468653-456x456.jpg',
-    bio: 'Specializing in high-heat wok artistry and southern Thai coastal seafood, Anan curates our famous steamed lime seabass, king prawn pad thai, and volcano duck.',
+    name: 'Wok & Grill Master',
+    role: 'Seafood & Sizzling Platter Specialist',
+    image: '/images/volcano-duck.jpg',
+    bio: 'Specializing in high-heat wok artistry, flamed sizzling platters, and fresh Thai seafood — including our famous sizzling Volcano Duck and steamed seabass with fresh lime and chillies.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
       instagram: 'https://www.instagram.com/tongthaibradford'
@@ -400,21 +400,45 @@ export const GALLERY_IMAGES = [
     caption: 'TongThai Restaurant Front — 198–200 Keighley Road, Bradford BD9'
   },
   {
-    src: '/images/9569414693_33895ce768_o-685x1024-220x220.jpg',
-    full: '/images/9569414693_33895ce768_o-685x1024-220x220.jpg',
-    alt: 'Authentic Thai herbal drinks and traditional refreshments at TongThai Bradford',
-    caption: 'Authentic Thai Specialities & Herbal Teas'
+    src: '/images/dining-table.jpg',
+    full: '/images/dining-table.jpg',
+    alt: 'Authentic Thai table setting and dining experience at TongThai Bradford',
+    caption: 'Table Setting & Dining Atmosphere at TongThai'
   },
   {
-    src: '/images/5403403550_7e0f08aed6_o-1024x681-220x220.jpg',
-    full: '/images/5403403550_7e0f08aed6_o-1024x681-220x220.jpg',
-    alt: 'TongThai elegant Thai restaurant dining room interior and table setting in Bradford',
-    caption: 'Warm Thai Hospitality on Keighley Road, Bradford'
+    src: '/images/dining-room-1.jpg',
+    full: '/images/dining-room-1.jpg',
+    alt: 'TongThai cozy restaurant dining room with fairy lights and ambient floral decor',
+    caption: 'Warm Ambiance & Cozy Dining on Keighley Road'
   },
   {
-    src: '/images/photodune-2201397-chef-with-dish-m-1024x682-220x220.jpg',
-    full: '/images/photodune-2201397-chef-with-dish-m-1024x682-220x220.jpg',
-    alt: 'TongThai head chef preparing fresh wok-tossed authentic Thai Pad Thai noodles',
-    caption: 'Sizzling Wok Flamed Pad Thai & Noodles'
+    src: '/images/dining-room-2.jpg',
+    full: '/images/dining-room-2.jpg',
+    alt: 'TongThai comfortable booth seating with rustic rope chandelier',
+    caption: 'Booth Seating & Handcrafted Chandelier'
+  },
+  {
+    src: '/images/volcano-duck.jpg',
+    full: '/images/volcano-duck.jpg',
+    alt: 'Signature sizzling Volcano Duck flamed fresh on cast iron plate at TongThai',
+    caption: 'Signature Sizzling Volcano Duck'
+  },
+  {
+    src: '/images/pad-thai-goong.jpg',
+    full: '/images/pad-thai-goong.jpg',
+    alt: 'Wok flamed King Prawn Pad Thai served on banana leaf with fresh lime and peanuts',
+    caption: 'Authentic King Prawn Pad Thai Goong'
+  },
+  {
+    src: '/images/steamed-sea-bass.jpg',
+    full: '/images/steamed-sea-bass.jpg',
+    alt: 'Steamed whole sea bass fillet with fresh lime, crushed garlic and birds eye chillies',
+    caption: 'Steamed Sea Bass with Lime & Chilli'
+  },
+  {
+    src: '/images/thai-green-curry.jpg',
+    full: '/images/thai-green-curry.jpg',
+    alt: 'Fragrant authentic Thai Green Curry with coconut milk swirl, bamboo and sweet basil',
+    caption: 'Hand-Pounded Thai Green Curry'
   }
 ];
