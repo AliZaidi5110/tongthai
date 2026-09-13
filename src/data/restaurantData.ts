@@ -25,6 +25,7 @@ export interface Chef {
   name: string;
   role: string;
   image: string;
+  objectPosition?: string;
   bio: string;
   socials: {
     facebook?: string;
@@ -359,9 +360,10 @@ export const POPULAR_DISHES: Dish[] = [
 export const CHEFS: Chef[] = [
   {
     id: 'chef-1',
-    name: 'Head Chef & Kitchen Team',
+    name: 'Head Chef',
     role: 'Head Chef & Culinary Director',
     image: '/images/chef-head.jpg',
+    objectPosition: 'center 20%',
     bio: 'With over 20 years of authentic heritage Thai cooking, our Head Chef brings traditional wok techniques, hand-pounded curry pastes, and royal Thai recipes directly to Keighley Road, Bradford.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
@@ -371,8 +373,9 @@ export const CHEFS: Chef[] = [
   {
     id: 'chef-2',
     name: 'TongThai Hospitality & Service Team',
-    role: 'Restaurant Management & Curry Specialists',
+    role: 'Restaurant Management & Service Team',
     image: '/images/chef-team-karaoke.jpg',
+    objectPosition: 'center 25%',
     bio: 'Dedicated to warm Thai hospitality and authentic culinary tradition. Our team ensures every curry, wok dish, and dining experience reflects the genuine spirit of Thailand.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
@@ -384,6 +387,7 @@ export const CHEFS: Chef[] = [
     name: 'Wok & Grill Master',
     role: 'Seafood & Sizzling Platter Specialist',
     image: '/images/volcano-duck.jpg',
+    objectPosition: 'center',
     bio: 'Specializing in high-heat wok artistry, flamed sizzling platters, and fresh Thai seafood — including our famous sizzling Volcano Duck and steamed seabass with fresh lime and chillies.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',

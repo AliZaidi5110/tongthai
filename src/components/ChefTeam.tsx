@@ -92,7 +92,7 @@ export default function ChefTeam() {
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 360px"
                   style={{
                     objectFit: 'cover',
-                    objectPosition: 'center 18%',
+                    objectPosition: chef.objectPosition || 'center 20%',
                     transition: 'transform 0.5s ease',
                   }}
                   className="chef-portrait"
