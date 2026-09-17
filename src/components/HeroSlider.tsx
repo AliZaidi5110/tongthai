@@ -20,8 +20,8 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    bgImage: '/images/volcano-duck.jpg',
-    imageAlt: 'Signature sizzling Volcano Duck Thai speciality on flaming hot plate at TongThai Bradford',
+    bgImage: '/images/hero-thai-feast.jpg',
+    imageAlt: 'Exquisite Royal Thai cuisine feast with sizzling Pad Thai, aromatic Green Curry, and spring rolls at TongThai Bradford',
     scriptTitle: 'Authentic Thai',
     subHeader: 'ROYAL HERITAGE RECIPES & WOK MASTERY • 100% HALAL',
     description: 'Welcome to TongThai Restaurant in Bradford. Indulge in authentic Green Curries, sizzling Pad Thai, and vibrant Thai herbs.',
