@@ -57,30 +57,23 @@ export default function ReservationSection() {
       return;
     }
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const serviceId =
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID && process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID !== 'your_service_id'
+        ? process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+        : 'service_xojs8hs';
+
+    const templateId =
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID && process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID !== 'your_template_id'
+        ? process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+        : 'template_1cqkvkr';
+
+    const publicKey =
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY && process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY !== 'your_public_key'
+        ? process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        : 'UFH-s4d0cv-38_fwN';
 
     const randomRef = 'TT-' + Math.floor(100000 + Math.random() * 900000);
     setBookingRef(randomRef);
-
-    if (
-      !serviceId ||
-      !templateId ||
-      !publicKey ||
-      serviceId === 'your_service_id' ||
-      templateId === 'your_template_id' ||
-      publicKey === 'your_public_key'
-    ) {
-      console.warn(
-        'EmailJS credentials are not configured. Please define NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY in .env.local.'
-      );
-      setStatus('error');
-      setErrorMessage(
-        'Online booking service is being initialized with EmailJS. Please add your credentials in .env.local or call +44 7506 288133 to confirm your reservation.'
-      );
-      return;
-    }
 
     setStatus('sending');
 
