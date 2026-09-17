@@ -38,9 +38,10 @@ export interface Chef {
 export const RESTAURANT_INFO = {
   name: 'TongThai Restaurant',
   tagline: 'Authentic Thai Cuisine',
+  owner: 'Suthima Chamnankit',
   address: '198-200 Keighley Road, Bradford, BD9 4JZ',
-  phone1: '01274 499088',
-  phone2: '07506 288133',
+  phone1: '+44 7506 288133',
+  phone2: '+44 7506 288133',
   email: 'info@tongthairestaurant.co.uk',
   website: 'https://www.tongthaionline.com/',
   googleSearchUrl: 'https://www.google.com/search?q=tong+thai+restaurant+bradford+',
@@ -360,11 +361,11 @@ export const POPULAR_DISHES: Dish[] = [
 export const CHEFS: Chef[] = [
   {
     id: 'chef-1',
-    name: 'Head Chef',
-    role: 'Head Chef & Culinary Director',
+    name: 'Suthima Chamnankit',
+    role: 'Business Owner & Head Chef',
     image: '/images/chef-head.jpg',
     objectPosition: 'center 20%',
-    bio: 'With over 20 years of authentic heritage Thai cooking, our Head Chef brings traditional wok techniques, hand-pounded curry pastes, and royal Thai recipes directly to Keighley Road, Bradford.',
+    bio: 'With over 20 years of authentic heritage Thai cooking, Suthima Chamnankit brings traditional wok techniques, hand-pounded curry pastes, and royal Thai recipes directly to Keighley Road, Bradford.',
     socials: {
       facebook: 'https://www.facebook.com/tongthaibradford',
       instagram: 'https://www.instagram.com/tongthaibradford'

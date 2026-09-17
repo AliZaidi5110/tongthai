@@ -145,7 +145,7 @@ export default function CartDrawer() {
                 Order Sent To Kitchen!
               </h4>
               <p style={{ fontSize: '0.875rem', color: '#aaa', lineHeight: 1.6, marginBottom: '24px' }}>
-                Your order has been sent to Head Chef Somchai Prasert and the TongThai kitchen team.
+                Your order has been sent to business owner Suthima Chamnankit and the TongThai kitchen team.
                 Estimated preparation time is 25 minutes.
               </p>
               <button onClick={handleDone} className="btn-capella-gold" style={{ width: '100%' }}>

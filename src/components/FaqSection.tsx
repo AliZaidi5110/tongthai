@@ -55,12 +55,8 @@ const FAQ_ITEMS: FaqItem[] = [
     answer: (
       <span>
         Table reservations can be made easily online using our reservation form or by telephoning our team directly at{' '}
-        <a href="tel:01274499088" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>
-          01274 499088
-        </a>{' '}
-        or{' '}
-        <a href="tel:07506288133" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>
-          07506 288133
+        <a href="tel:+447506288133" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>
+          +44 7506 288133
         </a>
         . We welcome couples, family gatherings, and private groups.
       </span>
@@ -242,7 +238,7 @@ export default function FaqSection() {
           }}
         >
           <a
-            href="tel:01274499088"
+            href="tel:+447506288133"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -255,7 +251,7 @@ export default function FaqSection() {
               letterSpacing: '1px',
             }}
           >
-            <Phone size={15} color="var(--color-gold)" aria-hidden="true" /> Call 01274 499088
+            <Phone size={15} color="var(--color-gold)" aria-hidden="true" /> Call +44 7506 288133
           </a>
           <a
             href="#reservation"

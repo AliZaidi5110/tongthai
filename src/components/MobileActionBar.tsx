@@ -29,8 +29,8 @@ export default function MobileActionBar() {
       >
         {/* Call Now */}
         <a
-          href="tel:01274499088"
-          aria-label="Call TongThai restaurant at 01274 499088"
+          href="tel:+447506288133"
+          aria-label="Call TongThai restaurant at +44 7506 288133"
           className="mobile-action-btn"
           style={{
             display: 'flex',

@@ -75,7 +75,7 @@ export default function AboutSection() {
                     198–200 Keighley Road
                   </div>
                   <div style={{ fontSize: '0.6875rem', color: 'var(--color-gold)' }}>
-                    Bradford, BD9 4JZ • <a href="tel:01274499088" style={{ color: 'inherit', textDecoration: 'underline' }}>01274 499088</a>
+                    Bradford, BD9 4JZ • <a href="tel:+447506288133" style={{ color: 'inherit', textDecoration: 'underline' }}>+44 7506 288133</a>
                   </div>
                 </address>
                 <span
@@ -200,7 +200,7 @@ export default function AboutSection() {
               <div>
                 <Image
                   src="/images/signature2.png"
-                  alt="Signature of Head Chef Somchai Prasert, TongThai Restaurant Bradford"
+                  alt="Signature of Business Owner Suthima Chamnankit, TongThai Restaurant Bradford"
                   width={180}
                   height={50}
                   style={{ objectFit: 'contain' }}
@@ -208,9 +208,9 @@ export default function AboutSection() {
               </div>
               <div style={{ borderLeft: '1px solid #ddd', paddingLeft: '16px' }}>
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase' }}>
-                  Chef Somchai Prasert
+                  Suthima Chamnankit
                 </div>
-                <div style={{ fontSize: '0.8125rem', color: '#888' }}>Head Chef &amp; Founder</div>
+                <div style={{ fontSize: '0.8125rem', color: '#888' }}>Business Owner &amp; Founder</div>
               </div>
             </div>
           </div>

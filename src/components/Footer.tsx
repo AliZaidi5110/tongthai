@@ -124,20 +124,11 @@ export default function Footer() {
               <div style={{ fontSize: '0.9375rem', color: '#cccccc', lineHeight: 1.6 }}>
                 <div>
                   <a
-                    href="tel:01274499088"
-                    aria-label="Call TongThai primary phone number 01274 499088"
+                    href="tel:+447506288133"
+                    aria-label="Call TongThai phone number +44 7506 288133"
                     style={{ color: '#ffffff' }}
                   >
-                    01274 499088
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="tel:07506288133"
-                    aria-label="Call TongThai mobile number 07506 288133"
-                    style={{ color: '#ffffff' }}
-                  >
-                    07506 288133
+                    +44 7506 288133
                   </a>
                 </div>
               </div>

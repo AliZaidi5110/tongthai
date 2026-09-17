@@ -137,7 +137,7 @@ export default function NotFound() {
           </Link>
 
           <a
-            href="tel:01274499088"
+            href="tel:+447506288133"
             className="btn-capella-outline"
             style={{
               display: 'inline-flex',
@@ -149,7 +149,7 @@ export default function NotFound() {
               color: 'var(--color-gold)',
             }}
           >
-            <Phone size={16} /> Call 01274 499088
+            <Phone size={16} /> Call +44 7506 288133
           </a>
         </div>
       </div>

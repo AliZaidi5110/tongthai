@@ -1,14 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles, ExternalLink } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles, ExternalLink, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+const getInitialDate = () => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return tomorrow.toISOString().split('T')[0];
+};
 
 export default function ReservationSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    date: '2026-09-12',
+    date: getInitialDate(),
     time: '19:30',
     guests: '2',
     seating: 'Main Dining Hall',
@@ -17,27 +24,113 @@ export default function ReservationSection() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (status === 'error') {
+      setStatus('idle');
+      setErrorMessage('');
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Required fields validation
+    const requiredFields: Array<keyof typeof formData> = ['name', 'email', 'phone', 'date', 'time', 'guests'];
+    for (const field of requiredFields) {
+      if (!formData[field] || formData[field].trim() === '') {
+        setStatus('error');
+        setErrorMessage('Please fill in all required fields marked with an asterisk (*).');
+        return;
+      }
+    }
+
+    if (!formData.email.includes('@') || !formData.email.includes('.')) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
     const randomRef = 'TT-' + Math.floor(100000 + Math.random() * 900000);
     setBookingRef(randomRef);
-    setIsSubmitted(true);
+
+    if (
+      !serviceId ||
+      !templateId ||
+      !publicKey ||
+      serviceId === 'your_service_id' ||
+      templateId === 'your_template_id' ||
+      publicKey === 'your_public_key'
+    ) {
+      console.warn(
+        'EmailJS credentials are not configured. Please define NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, and NEXT_PUBLIC_EMAILJS_PUBLIC_KEY in .env.local.'
+      );
+      setStatus('error');
+      setErrorMessage(
+        'Online booking service is being initialized with EmailJS. Please add your credentials in .env.local or call +44 7506 288133 to confirm your reservation.'
+      );
+      return;
+    }
+
+    setStatus('sending');
+
+    const detailsSummary = [
+      `Booking Reference: ${randomRef}`,
+      `Date: ${formData.date}`,
+      `Time: ${formData.time}`,
+      `Party Size: ${formData.guests}`,
+      `Preferred Seating: ${formData.seating}`,
+      `Special Requests: ${formData.notes.trim() ? formData.notes : 'None provided'}`,
+    ].join('\n');
+
+    const templateParams = {
+      date: formData.date,
+      time: formData.time,
+      party_size: formData.guests,
+      guests: formData.guests,
+      seating: formData.seating,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      special_requests: formData.notes.trim() ? formData.notes : 'None provided',
+      notes: formData.notes.trim() ? formData.notes : 'None provided',
+      message: detailsSummary,
+      booking_ref: randomRef,
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      setStatus('success');
+      setIsSubmitted(true);
+    } catch (err: any) {
+      console.error('EmailJS submission error:', err);
+      setStatus('error');
+      const errDetail = err?.text || err?.message || 'Network error occurred';
+      setErrorMessage(
+        `Failed to send booking request (${errDetail}). Please try again or call us at +44 7506 288133.`
+      );
+    }
   };
 
   const resetForm = () => {
     setIsSubmitted(false);
+    setStatus('idle');
+    setErrorMessage('');
     setFormData({
       name: '',
       email: '',
       phone: '',
-      date: '2026-09-12',
+      date: getInitialDate(),
       time: '19:30',
       guests: '2',
       seating: 'Main Dining Hall',
@@ -138,11 +231,11 @@ export default function ReservationSection() {
                   marginBottom: '10px',
                 }}
               >
-                Table Confirmed!
+                Booking Request Sent!
               </h3>
 
               <p style={{ fontSize: '1rem', color: '#555', marginBottom: '24px' }}>
-                Thank you, <strong>{formData.name}</strong>. Your reservation has been received and confirmed.
+                Thank you, <strong>{formData.name}</strong>. Your reservation request has been delivered to <strong>tongthai.siam@gmail.com</strong>. We will confirm shortly.
               </p>
 
               <div
@@ -479,7 +572,7 @@ export default function ReservationSection() {
                     name="phone"
                     required
                     aria-required="true"
-                    placeholder="+44 1274 499088"
+                    placeholder="+44 7506 288133"
                     value={formData.phone}
                     onChange={handleChange}
                     style={{
@@ -535,12 +628,52 @@ export default function ReservationSection() {
               <div style={{ textAlign: 'center' }}>
                 <button
                   type="submit"
+                  disabled={status === 'sending'}
                   className="btn-capella-gold"
-                  style={{ padding: '16px 44px' }}
+                  style={{
+                    padding: '16px 44px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    opacity: status === 'sending' ? 0.75 : 1,
+                    cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                  }}
                   aria-label="Confirm Table Reservation at TongThai"
                 >
-                  Confirm Table Reservation
+                  {status === 'sending' ? (
+                    <>
+                      <span className="spinner-inline" aria-hidden="true" />
+                      Sending Booking Request...
+                    </>
+                  ) : (
+                    'Confirm Table Reservation'
+                  )}
                 </button>
+
+                {status === 'error' && errorMessage && (
+                  <div
+                    role="alert"
+                    style={{
+                      marginTop: '20px',
+                      padding: '14px 18px',
+                      backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '4px',
+                      color: '#dc2626',
+                      fontSize: '0.875rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      textAlign: 'left',
+                      maxWidth: '620px',
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
               </div>
             </form>
           )}
@@ -588,6 +721,26 @@ export default function ReservationSection() {
           </a>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        .spinner-inline {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-top-color: #ffffff;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }

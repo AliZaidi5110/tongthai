@@ -242,8 +242,8 @@ export default function FoodhubDeliverySection() {
               Go to Foodhub Portal <ExternalLink size={15} aria-hidden="true" />
             </a>
             <a
-              href="tel:01274499088"
-              aria-label="Call TongThai Bradford restaurant at 01274 499088"
+              href="tel:+447506288133"
+              aria-label="Call TongThai Bradford restaurant at +44 7506 288133"
               className="btn-capella-outline"
               style={{
                 display: 'inline-flex',
@@ -254,7 +254,7 @@ export default function FoodhubDeliverySection() {
                 letterSpacing: '1px',
               }}
             >
-              <Phone size={15} aria-hidden="true" /> Call 01274 499088
+              <Phone size={15} aria-hidden="true" /> Call +44 7506 288133
             </a>
           </div>
         </div>

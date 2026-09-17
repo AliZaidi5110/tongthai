@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     'Thai Takeaway Bradford',
     'Halal Thai Restaurant Yorkshire',
   ],
-  authors: [{ name: 'TongThai Culinary Team', url: 'https://www.tongthaionline.com' }],
+  authors: [{ name: 'Suthima Chamnankit - TongThai Restaurant', url: 'https://www.tongthaionline.com' }],
   creator: 'TongThai Restaurant',
   publisher: 'TongThai Restaurant',
   formatDetection: {
@@ -119,7 +119,11 @@ const restaurantSchema = {
   ],
   logo: 'https://www.tongthaionline.com/images/tongthai-logo.png',
   url: 'https://www.tongthaionline.com/',
-  telephone: '+441274499088',
+  telephone: '+447506288133',
+  founder: {
+    '@type': 'Person',
+    name: 'Suthima Chamnankit',
+  },
   priceRange: '££',
   servesCuisine: ['Thai', 'Halal', 'Asian', 'Curry', 'Seafood'],
   address: {
@@ -257,7 +261,7 @@ const faqSchema = {
       name: 'Does TongThai offer takeaway and home delivery in Bradford?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, you can order online for home delivery across Bradford and click-and-collect through our official Foodhub portal with zero service fees at tongthaionline.co.uk or call 01274 499088.',
+        text: 'Yes, you can order online for home delivery across Bradford and click-and-collect through our official Foodhub portal with zero service fees at tongthaionline.co.uk or call +44 7506 288133.',
       },
     },
     {
@@ -265,7 +269,7 @@ const faqSchema = {
       name: 'Can I book a table online at TongThai Bradford?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, you can reserve a table online directly through our website booking form or by telephone at 01274 499088 for couple dinners, family meals, and group celebrations.',
+        text: 'Yes, you can reserve a table online directly through our website booking form or by telephone at +44 7506 288133 for couple dinners, family meals, and group celebrations.',
       },
     },
     {

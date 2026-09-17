@@ -95,11 +95,11 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <a
-                href="tel:01274499088"
+                href="tel:+447506288133"
                 className="top-phone-link"
-                aria-label="Call TongThai Bradford at 01274 499088"
+                aria-label="Call TongThai Bradford at +44 7506 288133"
               >
-                📞 01274 499088
+                📞 +44 7506 288133
               </a>
               <a
                 href="https://tongthaionline.co.uk/"
@@ -533,8 +533,8 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             <Calendar size={16} /> Book Table Now
           </a>
 
-          <a href="tel:01274499088" className="mobile-drawer-phone">
-            📞 01274 499088 • 198–200 Keighley Rd
+          <a href="tel:+447506288133" className="mobile-drawer-phone">
+            📞 +44 7506 288133 • 198–200 Keighley Rd
           </a>
         </div>
         </>
