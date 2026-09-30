@@ -71,45 +71,8 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
           transition: 'all 0.3s ease',
         }}
       >
-        {/* Top Announcement Bar: Foodhub Online Ordering */}
-        <div className="top-foodhub-strip">
-          <div
-            className="container container-wide"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '6px clamp(12px, 2vw, 32px)',
-              flexWrap: 'wrap',
-              gap: '6px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span className="top-foodhub-text">
-                🛵 Order Online for Fast Delivery &amp; Collection Across Bradford &nbsp;•&nbsp; 100% Halal
-              </span>
-            </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <a
-                href="tel:+447506288133"
-                className="top-phone-link"
-                aria-label="Call TongThai Bradford at +44 7506 288133"
-              >
-                📞 +44 7506 288133
-              </a>
-              <a
-                href="https://tongthaionline.co.uk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="top-foodhub-cta"
-                aria-label="Order online on Foodhub with instant delivery or collection (opens in new tab)"
-              >
-                <span>🛵</span> Order on Foodhub ↗
-              </a>
-            </div>
-          </div>
-        </div>
+
 
         <div className="container container-wide header-nav-container">
           {/* Logo */}
