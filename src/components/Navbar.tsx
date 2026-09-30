@@ -85,11 +85,8 @@ export default function Navbar({ onOpenReservation }: NavbarProps) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span className="top-foodhub-badge">
-                FOODHUB PARTNER
-              </span>
               <span className="top-foodhub-text">
-                🛵 Order Online for Fast Delivery &amp; Collection Across Bradford • 100% Halal
+                🛵 Order Online for Fast Delivery &amp; Collection Across Bradford &nbsp;•&nbsp; 100% Halal
               </span>
             </div>
 

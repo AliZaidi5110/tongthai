@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles, ExternalLink, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar as CalendarIcon, Clock, Users, Utensils, CheckCircle, Sparkles, ExternalLink, AlertCircle, Bell, BellOff } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useBookingNotifications } from '../context/useBookingNotifications';
 
 const getInitialDate = () => {
   const tomorrow = new Date();
@@ -26,6 +27,19 @@ export default function ReservationSection() {
   const [bookingRef, setBookingRef] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [notifPermission, setNotifPermission] = useState<'default' | 'granted' | 'denied' | 'unsupported'>('default');
+
+  const { requestPermission, triggerBookingNotification } = useBookingNotifications();
+
+  // Check current notification permission state on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (!('Notification' in window)) {
+      setNotifPermission('unsupported');
+    } else {
+      setNotifPermission(Notification.permission as 'default' | 'granted' | 'denied');
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -105,6 +119,15 @@ export default function ReservationSection() {
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
       setStatus('success');
       setIsSubmitted(true);
+
+      // Fire browser push notification for the restaurant owner
+      await triggerBookingNotification({
+        name: formData.name,
+        date: formData.date,
+        time: formData.time,
+        guests: formData.guests,
+        bookingRef: randomRef,
+      });
     } catch (err: any) {
       console.error('EmailJS submission error:', err);
       setStatus('error');
@@ -185,6 +208,106 @@ export default function ReservationSection() {
             }}
           />
         </div>
+
+        {/* 🔔 Notification Permission Banner (owner-facing) */}
+        {notifPermission === 'default' && (
+          <div
+            style={{
+              marginBottom: '28px',
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2206 100%)',
+              border: '1px solid rgba(197,157,40,0.35)',
+              borderRadius: '6px',
+              padding: '16px 22px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              flexWrap: 'wrap',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+            }}
+          >
+            <span style={{ fontSize: '1.5rem' }}>🔔</span>
+            <div style={{ flex: 1, minWidth: '200px' }}>
+              <div style={{ fontFamily: 'var(--font-heading)', fontSize: '0.8125rem', fontWeight: 700, color: '#f5e9c4', letterSpacing: '0.5px', marginBottom: '2px' }}>
+                Enable Booking Notifications
+              </div>
+              <div style={{ fontSize: '0.75rem', color: '#aaa', lineHeight: 1.4 }}>
+                Get an instant pop-up alert on this device whenever a new table reservation is submitted.
+              </div>
+            </div>
+            <button
+              id="enable-notif-btn"
+              onClick={async () => {
+                const granted = await requestPermission();
+                setNotifPermission(granted ? 'granted' : 'denied');
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                background: 'var(--color-gold)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '9px 18px',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
+            >
+              <Bell size={13} /> Enable Alerts
+            </button>
+          </div>
+        )}
+
+        {notifPermission === 'granted' && (
+          <div
+            style={{
+              marginBottom: '20px',
+              background: 'rgba(34,197,94,0.08)',
+              border: '1px solid rgba(34,197,94,0.25)',
+              borderRadius: '6px',
+              padding: '10px 18px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              fontSize: '0.8125rem',
+              color: '#16a34a',
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 600,
+              letterSpacing: '0.5px',
+            }}
+          >
+            <Bell size={15} />
+            <span>✓ Booking notifications are enabled — you'll get a popup alert for every new reservation.</span>
+          </div>
+        )}
+
+        {notifPermission === 'denied' && (
+          <div
+            style={{
+              marginBottom: '20px',
+              background: 'rgba(239,68,68,0.06)',
+              border: '1px solid rgba(239,68,68,0.2)',
+              borderRadius: '6px',
+              padding: '10px 18px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              fontSize: '0.8125rem',
+              color: '#dc2626',
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 600,
+            }}
+          >
+            <BellOff size={15} />
+            <span>Notifications blocked. To enable, click the 🔒 lock icon in your browser address bar and allow notifications.</span>
+          </div>
+        )}
 
         {/* Confirmation or Form Card */}
         <div
